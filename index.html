@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Geolocation</title>
+    <title>Report</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        display: none;
         height: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
@@ -59,11 +58,56 @@
 
 #report-btn {
   font-size: 1.2em;
-  width: 80%;
-  height: 30px;
+  width: 100%;
+  height: 40px;
   background-color: #4CAF50
 }
 
+#estimated-time {
+  font-family: sans-serif;
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
     </style>
 
   </head>
@@ -78,139 +122,40 @@
     </navbar>
     <div id="map"></div>
 
-    <div id="road-condition-map">
+    <!--<div id="road-condition-map">
       <iframe src="https://www.google.com/maps/d/embed?mid=11mn922SZMwNs3OK30sIMiNvByt8" width="100%" height="480"></iframe>
-    </div>
+    </div>-->
 
     <div id="report">
       <h2>Report Problem</h2>
-      <input class="txt-field" id="problem-location" type="text" placeholder="Location"></input>
+      <h3>Location</h3>
+      <input class="txt-field" id="problem-location" type="text"</input>
+      <h3>Problem type</h3>
       <form id=problem-type>
         <input type="radio" name="problem-type" value="Blocked" checked>Path Blocked
         <input type="radio" name="problem-type" value="Weather">Weather
         <input type="radio" name="problem-type" value="Fault">Fault
         <input type="radio" name="problem-type" value="Other">Other
       </form>
-      <input class="txt-field" id="problem-description" type="text" placeholder="Problem Description"></input>
-      <button id="report-btn" type="button" onclick="addProblem()" align="center">Report!</button>
+      <h3>Estimated length</h3>
+      <form id=problem-time>
+        <input type="radio" name="problem-type" value="Temporary" checked>Temporary
+        <input type="radio" name="problem-type" value="Permanent">Permanent until
+        <input type="date" data-date-inline-picker="true" id="estimated-time">
+      </form>
+      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)"></input>
+      <button id="report-btn" type="button" onclick="addProblem(pos)" align="center">Send Report!</button>
     </div>
 
-<!--Map from espoo
-    <div id="mapWrapper" style="padding-right:0px;">
-                <div style="width: 100%; background-color: rgb(255, 255, 255); outline: none;" id="mapcontainer" class="give-feedback-map-container tekla-map leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                    <div class="map-objects-container disable-map-events">
-                        <div class="map-objects-header">
-                            Karttakohteet
-                            <span class="map-objects-toggle icon30-rounded icon-up30-rounded"></span>
-                        </div>
-                        <div style="display: none" class="collapse-container map-objects-collapse-container">
-                            <div class="open collapsible-header map-objects-collapse-header" id="give-feedback-tab" data-collapse-summary="" aria-expanded="true"><a href="#">
-                                <div style=" margin-left: 15px;">
-                                    <div class="map-objects-header-title">
-                                        Palautteen sijaintimerkinnät
-                                        <div class="map-objects-header-arrow icon30 icon-up30"></div>
-                                    </div>
-                                </div>
-                            </a></div>
-                            <div class="give-feedback-mapobjects" aria-hidden="false">
-                                <span class="map-object-selectioninfo-text" id="ownobjects">
-                                </span>
-                            </div>
-                            <div class="collapsible-header map-objects-collapse-header" id="selectioninfo-tab" data-collapse-summary="" aria-expanded="false"><a href="#">
-                                <div style="margin-left: 15px;">
-                                    <div class="map-objects-header-title">
-                                        Valitun kohteen tiedot
-                                        <div class="map-objects-header-arrow icon30 icon-up30"></div>
-                                    </div>
-                                </div>
-                            </a></div>
-                            <div id="selection-info" class="map-object-selectioninfo" aria-hidden="true" style="display: none;">
-                                <span class="map-object-selectioninfo-text" id="selectioninfo"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="disable-map-events map-scroll-helper" style="right: 0;"></div>
-                    <div class="disable-map-events map-scroll-helper" style="left: 0;"></div>
-                <div id="tooltipdiv" class="map-tooltip" style="position: absolute; left: 300px; top: 500px; width: 100px; display: none; background-color: rgb(255, 255, 255); z-index: 7000;"></div><span class="icon-ims-hover" style="width:0px;height:0px;position:absolute;right:0px;bottom:0px"></span><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-712px, 31px, 0px);"><div class="leaflet-pane leaflet-tile-pane"><div class="leaflet-layer " style="z-index: 1; opacity: 1;"><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 17; transform: translate3d(821px, -26px, 0px) scale(0.25);">
-                </div>
-                <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 18; transform: translate3d(712px, -23px, 0px) scale(0.5);"></div><div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(475px, -15px, 0px) scale(1);"><img alt="" role="presentation" src="https://kartat.espoo.fi/IMS/Tile?basemap=Osoitekartta&amp;x=1554&amp;y=407&amp;z=11" class="leaflet-tile leaflet-tile-loaded" style="width: 257px; height: 257px; transform: translate3d(119px, -118px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://kartat.espoo.fi/IMS/Tile?basemap=Osoitekartta&amp;x=1555&amp;y=407&amp;z=11" class="leaflet-tile leaflet-tile-loaded" style="width: 257px; height: 257px; transform: translate3d(375px, -118px, 0px); opacity: 1;">
-                  <img alt="" role="presentation" src="https://kartat.espoo.fi/IMS/Tile?basemap=Osoitekartta&amp;x=1554&amp;y=406&amp;z=11" class="leaflet-tile leaflet-tile-loaded" style="width: 257px; height: 257px; transform: translate3d(119px, 138px, 0px); opacity: 1;"><img alt="" role="presentation" src="https://kartat.espoo.fi/IMS/Tile?basemap=Osoitekartta&amp;x=1555&amp;y=406&amp;z=11" class="leaflet-tile leaflet-tile-loaded" style="width: 257px; height: 257px; transform: translate3d(375px, 138px, 0px); opacity: 1;">
-                </div>
-              </div>
-            </div>
-              <div class="leaflet-pane leaflet-shadow-pane"></div>
-              <div class="leaflet-pane leaflet-overlay-pane">
-                <canvas class="leaflet-zoom-animated" width="434" height="478" style="transform: translate3d(676px, -71px, 0px); width: 434px; height: 478px;"></canvas>
-              </div>
-              <div class="leaflet-pane leaflet-marker-pane">
-                <div class="leaflet-marker-icon cluster-image leaflet-zoom-animated leaflet-interactive" tabindex="0" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(1021px, -28px, 0px); z-index: -28;"><div class="cluster-count">5</div></div><div class="leaflet-marker-icon cluster-image leaflet-zoom-animated leaflet-interactive" tabindex="0" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(986px, 52px, 0px); z-index: 52;">
-                  <div class="cluster-count">30
-                  </div>
-                </div>
-                <div class="leaflet-marker-icon cluster-image leaflet-zoom-animated leaflet-interactive" tabindex="0" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(850px, 1px, 0px); z-index: 1;"><div class="cluster-count">7</div></div><div class="leaflet-marker-icon cluster-image leaflet-zoom-animated leaflet-interactive" tabindex="0" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(876px, 68px, 0px); z-index: 68;">
-                  <div class="cluster-count">13</div>
-                </div>
-                <div class="leaflet-marker-icon cluster-image leaflet-zoom-animated leaflet-interactive" tabindex="0" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(951px, -12px, 0px); z-index: -12;"><div class="cluster-count">5</div></div><div class="leaflet-marker-icon cluster-image leaflet-zoom-animated leaflet-interactive" tabindex="0" style="margin-left: -16px; margin-top: -16px; width: 32px; height: 32px; transform: translate3d(1065px, 36px, 0px); z-index: 36;">
-                  <div class="cluster-count">12</div>
-                </div>
-              </div>
-              <div class="leaflet-pane leaflet-tooltip-pane"></div>
-              <div class="leaflet-pane leaflet-popup-pane"></div>
-              <div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(398123px, -104147px, 0px) scale(1024);"></div>
-            </div>
-            <div class="leaflet-control-container">
-              <div class="leaflet-top leaflet-left">
-              </div>
-              <div class="leaflet-top leaflet-right">
-              </div>
-              <div class="leaflet-bottom leaflet-left"></div>
-              <div class="leaflet-bottom leaflet-right"></div>
-            </div>
-            <div class="leaflet-contextmenu" style="z-index: 10000; position: absolute; width: 160px; left: auto; right: 40px; top: 221px; bottom: auto; display: none;">
-              <a class="leaflet-contextmenu-item" href="#">Keskitä kartta tähän</a></div>
-              <div style="position: absolute; left: 5px; bottom: 2px; z-index: 7222; background: transparent; width: 100%;">
-                <div style="position: absolute; left: 0px; bottom: 0px; z-index: 1; background: transparent; width: 100%;">
-                  <div id="copy1" class="map-copyright" style="position: absolute; bottom: -1px;">© Espoon kaupunki . Päivitetty 19.3.2017</div>
-                  <div class="map-scale" style="position: absolute; bottom: 18px;"><span id="scaletext">&nbsp;5 km&nbsp;</span>
-                    <div id="scalebar" class="map-ruler" style="width: 78px;"></div>
-                  </div>
-                </div>
-              </div>
-              <div style="position: absolute; right: 5px; top: 5px; z-index: 7222; background: transparent; width: 100%;">
-                <div style="position: absolute; right: 0px; top: 0px; z-index: 1; background: transparent; width: 100%;">
-                  <a title="Suurenna kartta" class="disable-map-events icon-ims icon-minmaxmap" style="position: absolute; cursor: pointer; top: 0px; right: 0px;"></a>
-                </div>
-              </div>
-              <div style="position: absolute; left: 5px; top: 5px; z-index: 7222; background: transparent; width: 100%;">
-                <div style="position: absolute; left: 0px; top: 0px; z-index: 1; background: transparent; width: 100%;">
-                  <a class="disable-map-events icon-ims icon-navi icon-geolocation" href="#" title="Oma sijainti" style="position: absolute; left: 0px; top: 0px;"></a>
-                  <a class="disable-map-events icon-ims icon-navi icon-zoomin" href="#" title="Lähennä" style="position: absolute; left: 0px; top: 38px;"></a>
-                  <a class="disable-map-events icon-ims icon-navi icon-zoomout" href="#" title="Loitonna" style="position: absolute; left: 0px; top: 69px;"></a>
-                  <a class="disable-map-events icon-ims icon-tool icon-drawpoint" href="#" title="Lisää pistemäinen sijainti" style="position: absolute; left: 0px; top: 107px;"></a>
-                  <a class="disable-map-events icon-ims icon-tool icon-drawpolyline" href="#" title="Lisää viivamainen sijainti" style="position: absolute; left: 0px; top: 138px;"></a>
-                  <a class="disable-map-events icon-ims icon-tool icon-drawpolygon" href="#" title="Lisää aluemainen sijainti" style="position: absolute; left: 0px; top: 169px;"></a>
-                </div>
-                <div style="position: absolute; left: 32px; top: 0px; z-index: 1; background: transparent; width: 100%;">
-                  <ul id="basemap-switcher" class="disable-map-events basemap-switcher" style="z-index: 7222; top: 0px;">
-                    <li class="opaskartta"><a href="#"><span class="preview"></span><span class="label">Opaskartta</span></a></li>
-                    <li class="osoitekartta selected"><a href="#"><span class="preview"></span><span class="label">Osoitekartta</span></a></li>
-                    <li class="ortokartta"><a href="#"><span class="preview"></span><span class="label">Ilmakuva</span></a></li></ul>
-                </div>
-              </div>
-                <div style="position: absolute; right: 5px; bottom: 2px; z-index: 7222; background: transparent; width: 100%;">
-                  <div style="position: absolute; right: 0px; bottom: 0px; z-index: 1; background: transparent; width: 100%;">
-                    <div style="position: absolute; bottom: 5px; right: 0px; display: none;" class="loader-indicator-container"><span style="border:0" class="icon-ims icon-tool loader-indicator"></span></div>
-                  </div>
-              </div>
-            </div>
-          -->
+    <div id="snackbar">Thank You for Your Report</div>
 
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
-      var pos;
+      var pos; //current pos 60.1700831,24.8056837
+      var map;
 
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -237,7 +182,13 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: 'Hello World!'
+        });
       }
+
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -247,16 +198,22 @@
       }
 
       // Create marker for new problem
-      function addProblem() {
-        marker = new google.maps.Marker({
-          map: map,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-          position: pos
-        });
-        marker.addListener('click', toggleBounce);
+      function addProblem(position) {
+        // notifications message
+        pos = position
+        var x = document.getElementById("snackbar")
+        x.className = "show";
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        //add marker to the map
+        console.log("position: "+ pos)
+        var marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        title: 'Hello World!'
+      });
+      console.log("problem added");
+        //marker.addListener('click', toggleBounce);
       }
-
 
     function toggleBounce() {
       if (marker.getAnimation() !== null) {
