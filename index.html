@@ -128,22 +128,27 @@
 
     <div id="report">
       <h2>Report Problem</h2>
-      <h3>Location</h3>
-      <input class="txt-field" id="problem-location" type="text"</input>
-      <h3>Problem type</h3>
-      <form id=problem-type>
+      <h3>Picture (optional)</h3>
+      <img alt="camera-icon" width="20%" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-camera-128.png"/>
+      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text" width="100%"</input>
+      <h3>Type</h3>
+      <form id=type>
         <input type="radio" name="problem-type" value="Blocked" checked>Path Blocked
-        <input type="radio" name="problem-type" value="Weather">Weather
-        <input type="radio" name="problem-type" value="Fault">Fault
-        <input type="radio" name="problem-type" value="Other">Other
+        <input type="radio" name="problem-type" value="Be Careful">Attention
+        <input type="radio" name="problem-type" value="Suggest improvement">Suggestion
       </form>
       <h3>Estimated length</h3>
-      <form id=problem-time>
-        <input type="radio" name="problem-type" value="Temporary" checked>Temporary
-        <input type="radio" name="problem-type" value="Permanent">Permanent until
+      <form id=time>
+        <input type="radio" name="temporary" value="Temporary" checked>Temporary
+        <input type="radio" name="permanent" value="Permanent">Permanent until
         <input type="date" data-date-inline-picker="true" id="estimated-time">
       </form>
-      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)"></input>
+      <h3>Estimated length</h3>
+      <form id=severity>
+        <input type="radio" name="urgent" value="Urgent" checked>Urgent
+        <input type="radio" name="not-urgent" value="not-urgent">Not urgent
+      </form>
+      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" width="100%"></input>
       <button id="report-btn" type="button" onclick="addProblem(pos)" align="center">Send Report!</button>
     </div>
 
@@ -199,11 +204,6 @@
 
       // Create marker for new problem
       function addProblem(position) {
-        // notifications message
-        pos = position
-        var x = document.getElementById("snackbar")
-        x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         //add marker to the map
         console.log("position: "+ pos)
         var marker = new google.maps.Marker({
@@ -214,6 +214,13 @@
       console.log("problem added");
         //marker.addListener('click', toggleBounce);
       }
+
+    function showNotification(message){
+      pos = position
+      var x = document.getElementById("snackbar")
+      x.className = "show";
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    }
 
     function toggleBounce() {
       if (marker.getAnimation() !== null) {
