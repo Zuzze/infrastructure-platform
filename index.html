@@ -58,8 +58,8 @@
 
 #report-btn {
   font-size: 1.2em;
-  width: 100%;
-  height: 40px;
+  width: 80%;
+  height: 50px;
   background-color: #4CAF50
 }
 
@@ -126,11 +126,11 @@
       <iframe src="https://www.google.com/maps/d/embed?mid=11mn922SZMwNs3OK30sIMiNvByt8" width="100%" height="480"></iframe>
     </div>-->
 
-    <div id="report">
+    <div id="report" align="center">
       <h2>Report Problem</h2>
       <h3>Picture (optional)</h3>
       <img alt="camera-icon" width="20%" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-camera-128.png"/>
-      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text" width="100%"</input>
+      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text" width="80%"</input>
       <h3>Type</h3>
       <form id=type>
         <input type="radio" name="problem-type" value="Blocked" checked>Path Blocked
@@ -139,17 +139,17 @@
       </form>
       <h3>Estimated length</h3>
       <form id=time>
-        <input type="radio" name="temporary" value="Temporary" checked>Temporary
-        <input type="radio" name="permanent" value="Permanent">Permanent until
+        <input type="radio" name="duration" value="Temporary" checked>Temporary
+        <input type="radio" name="duration" value="Permanent">Permanent until
         <input type="date" data-date-inline-picker="true" id="estimated-time">
       </form>
       <h3>Estimated length</h3>
       <form id=severity>
-        <input type="radio" name="urgent" value="Urgent" checked>Urgent
-        <input type="radio" name="not-urgent" value="not-urgent">Not urgent
+        <input type="radio" name="severity" value="Urgent" checked>Urgent
+        <input type="radio" name="severity" value="not-urgent">Not urgent
       </form>
-      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" width="100%"></input>
-      <button id="report-btn" type="button" onclick="addProblem(pos)" align="center">Send Report!</button>
+      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" width="80%"></input>
+      <button id="report-btn" type="button" onclick="addProblem()" align="center">Send Report!</button>
     </div>
 
     <div id="snackbar">Thank You for Your Report</div>
@@ -163,11 +163,17 @@
       var map;
 
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 60.2045577, lng: 24.6568111},
           zoom: 17
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
+        /*var userMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            icon: im
+        });
+        */
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -177,8 +183,10 @@
               lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are here');
+            //infoWindow.setPosition(pos);
+            //infoWindow.setContent('You are here');
+            userMarker.setPosition(pos);
+
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -186,12 +194,10 @@
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
+          pos =
+          {lat: 60.2045577, lng: 24.6568111
+          };
         }
-        var marker = new google.maps.Marker({
-          position: pos,
-          map: map,
-          title: 'Hello World!'
-        });
       }
 
 
@@ -203,15 +209,16 @@
       }
 
       // Create marker for new problem
-      function addProblem(position) {
+      function addProblem() {
         //add marker to the map
-        console.log("position: "+ pos)
         var marker = new google.maps.Marker({
         position: pos,
         map: map,
         title: 'Hello World!'
       });
+      console.log(marker);
       console.log("problem added");
+      showNotification("Thank You");
         //marker.addListener('click', toggleBounce);
       }
 
