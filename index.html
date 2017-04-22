@@ -183,11 +183,9 @@
               lng: position.coords.longitude
             };
 
-            //infoWindow.setPosition(pos);
-            //infoWindow.setContent('You are here');
-            userMarker.setPosition(pos);
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('You are here');
 
-            map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -198,6 +196,9 @@
           {lat: 60.2045577, lng: 24.6568111
           };
         }
+
+        var bikeLayer = new google.maps.BicyclingLayer();
+        bikeLayer.setMap(map);
       }
 
 
