@@ -72,6 +72,14 @@
   font-family: 'Quantico', sans-serif;
 }
 
+.hidden {
+  display:none;
+}
+
+.visible {
+  display: inline;
+}
+
 #report-btn {
   font-size: 1.2em;
   width: 80%;
@@ -263,6 +271,11 @@ section {
 
             infoWindow.setPosition(pos);
             infoWindow.setContent('You are here');
+            var marker = new google.maps.Marker({
+              position: pos,
+              icon: 'http://maps.google.com/mapfiles/kml/pal3/icon40.png',
+              map: map
+            });
 
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
