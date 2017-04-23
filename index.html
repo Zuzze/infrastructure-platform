@@ -226,15 +226,15 @@ section {
       <input class="txt-field" id="problem-location" placeholder="Current Location" type="text"</input>
       <form id=type>
         <label class="type-icon">
-        <input type="radio" name="problem-type" value="Fault" checked onclick="selectType(value)">
+        <input type="radio" name="problem-type" value="Fault" checked onclick="updateType(value)">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRni0C0N6BpGhpV-RzRHCITvHYkp1NWQcukrb8AYT5nKEZh3OXl"
         </label>
         <label class="type-icon">
-        <input type="radio" name="problem-type" value="Attention" onclick="selectType(value)">
+        <input type="radio" name="problem-type" value="Attention" onclick="updateType(value)">
         <img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/sign-warning-icon.png"
       </label>
       <label class="type-icon">
-        <input type="radio" name="problem-type" value="Suggestion" onclick="selectType(value)">
+        <input type="radio" name="problem-type" value="Suggestion" onclick="updateType(value)">
         <img src="http://www.myiconfinder.com/uploads/iconsets/f35e99cd862d7f1c84d9dac1d78c3f06-star.png"
       </label
       </form>
@@ -289,6 +289,7 @@ section {
       // locate you.
       var pos; //current pos 60.1700831,24.8056837
       var map;
+      var selectedType = 'Fault'
       var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
       var icons = {
        attention: {
@@ -316,6 +317,7 @@ section {
               lng: position.coords.longitude
             };
 
+            //add marker to current location
             var marker = new google.maps.Marker({
               position: pos,
               icon: 'http://maps.google.com/mapfiles/kml/pal3/icon40.png',
@@ -337,6 +339,7 @@ section {
         var bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
 
+        //init existing problems
        var features = [
          {
            position: new google.maps.LatLng(60.2045577, 24.6568111),
@@ -362,7 +365,6 @@ section {
          }
 
        ];
-
        // Create markers.
        features.forEach(function(feature) {
          var marker = new google.maps.Marker({
@@ -372,7 +374,6 @@ section {
          });
        });
       }
-
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -380,24 +381,58 @@ section {
                               'Error: Your browser doesn\'t support geolocation.');
       }
 
-      // Create marker for new problem
-      function addProblem(type) {
-        //add marker to the map
-        var marker = new google.maps.Marker({
-        position: pos,
-        icon: 'http://maps.google.com/mapfiles/kml/pal3/icon41.png',
-        map: map,
-        title: 'Hello World!'
-      });
-      marker.addListener('click', showReportInfo(this));
-      console.log(marker);
-      console.log("problem added");
-      showNotification("Thank You");
-        //marker.addListener('click', toggleBounce);
+      function updateType(type){
+        selectedType = type;
+        console.log(type);
       }
 
+      // Create marker for new problem
+      function addProblem() {
+        //add marker to the map
+        var iconPath;
+        if (selectedType == 'Fault'){
+          iconPath = icons[0];
+        } else if (selectedType == 'Attention') {
+            iconPath = icons[1];
+        } else {
+          iconPath = icons[2];
+        }
+        console.log("report type: " + selectedType);
+        var marker = new google.maps.Marker({
+        position: pos,
+        icon: iconPath,
+        map: map,
+        title: selectedType
+      });
 
-    function showNotification(message){
+      //add info window to problem
+      var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
+            '<h2>'+selectedType+'</h2>'+
+            '<div id="siteNotice">'+
+            '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
+            '</div>'+
+            '<div id="bodyContent">'+
+            '<p>Road blocked due to Construction site</p>'+
+            '<small>Reported 1 minute ago</small><br>'+
+            '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
+            '<br><a href="#" style="font-size: 0.9em;" align="right">'+
+            'See more...</a>' +
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+      marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+      console.log(marker);
+      console.log("problem added");
+      showNotification();
+    }
+
+
+    function showNotification(){
       var x = document.getElementById("snackbar")
       x.className = "show";
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
@@ -411,7 +446,27 @@ section {
       });
       */
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Report content here');
+      var contentString = '<div id="content">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+          '<div id="bodyContent">'+
+          '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+          'sandstone rock formation in the southern part of the '+
+          'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
+          'south west of the nearest large town, Alice Springs; 450&#160;km '+
+          '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
+          'features of the Uluru - Kata Tjuta National Park. Uluru is '+
+          'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
+          'Aboriginal people of the area. It has many springs, waterholes, '+
+          'rock caves and ancient paintings. Uluru is listed as a World '+
+          'Heritage Site.</p>'+
+          '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+          'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+          '(last visited June 22, 2009).</p>'+
+          '</div>'+
+          '</div>';
+            infoWindow.setContent(contentString);
     }
 
     function toggleBounce() {
