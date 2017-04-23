@@ -11,7 +11,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 500px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -77,7 +77,7 @@
 }
 
 .visible {
-  display: inline;
+  display: block;
 }
 
 #report-btn {
@@ -309,22 +309,22 @@ section {
            position: new google.maps.LatLng(60.2045577, 24.6568111),
            type: 'fault'
          }, {
-           position: new google.maps.LatLng(60.2045570, 24.6568111),
+           position: new google.maps.LatLng(60.2055570, 24.6562111),
            type: 'suggestion'
          }, {
-           position: new google.maps.LatLng(60.2045577, 24.6568116),
+           position: new google.maps.LatLng(61.2045577, 24.6568116),
            type: 'suggestion'
          }, {
-           position: new google.maps.LatLng(60.2045572, 24.6568115),
+           position: new google.maps.LatLng(60.2045572, 24.7568115),
            type: 'attention'
          }, {
-           position: new google.maps.LatLng(60.2045573, 24.6568119),
+           position: new google.maps.LatLng(60.2245573, 24.6968119),
            type: 'attention'
          }, {
-           position: new google.maps.LatLng(60.2045580, 24.6568111),
+           position: new google.maps.LatLng(60.9045580, 24.7568111),
            type: 'attention'
          }, {
-           position: new google.maps.LatLng(60.2045577, 24.6568120),
+           position: new google.maps.LatLng(60.2945577, 24.6598120),
            type: 'fault'
          }
 
@@ -355,7 +355,7 @@ section {
         map: map,
         title: 'Hello World!'
       });
-      marker.addListener('click', showReportInfo(marker));
+      marker.addListener('click', showReportInfo(this));
       console.log(marker);
       console.log("problem added");
       showNotification("Thank You");
@@ -372,6 +372,10 @@ section {
     function showReportInfo(marker){
       var reportPosition = marker.position;
       var infoWindow = new google.maps.InfoWindow({map: map});
+      /*google.maps.event.addListener(marker, 'click', function() {
+        console.log(marker.get('id'));
+      });
+      */
       infoWindow.setPosition(pos);
       infoWindow.setContent('Report content here');
     }
@@ -389,6 +393,15 @@ section {
       console.log("picture taken");
       window.open("Picture taken!");
     }
+
+    //event handlers
+    function showMap(){
+      document.getElementById("map").addClass('visible');
+      document.getElementById("map").removeClass('hidden');
+      document.getElementById("report").addClass('hidden');
+      document.getElementById("report").removeClass('visible');
+    }
+
 
     </script>
     <script async defer
