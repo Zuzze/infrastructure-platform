@@ -289,19 +289,24 @@ section {
       // locate you.
       var pos; //current pos 60.1700831,24.8056837
       var map;
+      var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
+      var icons = {
+       attention: {
+         icon: iconBase + '/icon41.png'
+       },
+       suggestion: {
+         icon: iconBase + '/icon35.png'
+       },
+       fault: {
+         icon: iconBase + '/icon33.png'
+       }
+      };
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 60.2045577, lng: 24.6568111},
           zoom: 15
         });
-        var infoWindow = new google.maps.InfoWindow({map: map});
-        /*var userMarker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            icon: im
-        });
-        */
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -311,13 +316,12 @@ section {
               lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are here');
             var marker = new google.maps.Marker({
               position: pos,
               icon: 'http://maps.google.com/mapfiles/kml/pal3/icon40.png',
               map: map
             });
+            map.setCenter(pos);
 
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -332,19 +336,6 @@ section {
 
         var bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
-
-        var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
-       var icons = {
-         attention: {
-           icon: iconBase + '/icon41.png'
-         },
-         suggestion: {
-           icon: iconBase + '/icon35.png'
-         },
-         fault: {
-           icon: iconBase + '/icon33.png'
-         }
-       };
 
        var features = [
          {
@@ -390,10 +381,11 @@ section {
       }
 
       // Create marker for new problem
-      function addProblem() {
+      function addProblem(type) {
         //add marker to the map
         var marker = new google.maps.Marker({
         position: pos,
+        icon: 'http://maps.google.com/mapfiles/kml/pal3/icon41.png',
         map: map,
         title: 'Hello World!'
       });
