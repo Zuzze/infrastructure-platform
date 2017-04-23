@@ -64,6 +64,7 @@
   width: 80%;
   max-width: 500px;
   font-family: 'Quantico', sans-serif;
+  font-size: 0.8em;
 }
 
 #problem-description {
@@ -83,9 +84,13 @@
 
 #report-btn {
   font-size: 1.2em;
-  width: 80%;
+  width: 100px;
   height: 50px;
   max-width: 500px;
+  color: black;
+  text-decoration: none;
+  padding: 20px 80px 20px 80px;
+  margin-bottom: 50px;
   background-color: #77c8ce;
   border: none;
   font-weight: bold;
@@ -181,6 +186,10 @@ section {
   content: "-";
 }
 
+.active {
+  background-color: #77c8ce;
+}
+
 /*type selection*/
 .type-icon > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
@@ -204,11 +213,10 @@ section {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <div class="icon-bar" style="position: fixed; z-index: 1;">
-      <a class="active" href="#map"><i class="fa fa-map"></i> Map</a>
-      <a href="#report"><i class="fa fa-plus"></i> Report</a>
-      <a href="#profile"><i class="fa fa-user"></i> Profile</a>
-      <a href="#hub"><i class="fa fa-users"></i> Hub</a>
-      <a href="#about"><i class="fa fa-info"></i> About</a>
+      <a class="active" href="index.html"><i class="fa fa-map"></i> Map</a>
+      <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
+      <a href="hub.html"><i class="fa fa-users"></i> Hub</a>
+      <a href="about.html"><i class="fa fa-info"></i> About</a>
 
     </div>
 
@@ -222,7 +230,8 @@ section {
     <div id="report" align="center">
       <h2>REPORT</h2>
       <div id="mandatory">
-      <img alt="camera-icon" width="20%" src="https://cdn0.iconfinder.com/data/icons/flat-designed-circle-icon-2/1000/camera.png" onclick="window.open('pic')"/>
+      <img alt="camera-icon" width="100px" src="https://cdn0.iconfinder.com/data/icons/flat-designed-circle-icon-2/1000/camera.png" onclick="takePicture()"/>
+      <div><p id="picture-status" style="visibility: hidden">Picture saved<p></div>
       <input class="txt-field" id="problem-location" placeholder="Current Location" type="text"</input>
       <form id=type>
         <label class="type-icon">
@@ -238,6 +247,7 @@ section {
         <img src="http://www.myiconfinder.com/uploads/iconsets/f35e99cd862d7f1c84d9dac1d78c3f06-star.png"
       </label
       </form>
+      <p id="type-field">Fault</p>
       <br>
       <input id="toggle" type="checkbox">
       <label for="toggle">Add details</label>
@@ -259,7 +269,7 @@ section {
       <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)"></input>
     </div>
   </div>
-      <button id="report-btn" type="button" onclick="addProblem()" align="center">Send Report!</button>
+      <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
     </div>
 
     <!--<div id="profile" align="center">
@@ -383,6 +393,8 @@ section {
 
       function updateType(type){
         selectedType = type;
+        console.log(document);
+        document.getElementById("type-field").innerHTML = selectedType;
         console.log(type);
       }
 
@@ -391,12 +403,13 @@ section {
         //add marker to the map
         var iconPath;
         if (selectedType == 'Fault'){
-          iconPath = icons[0];
+          iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
         } else if (selectedType == 'Attention') {
-            iconPath = icons[1];
+            iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon41.png';
         } else {
-          iconPath = icons[2];
+          iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
         }
+        console.log("icon path " + iconPath);
         console.log("report type: " + selectedType);
         var marker = new google.maps.Marker({
         position: pos,
@@ -469,30 +482,9 @@ section {
             infoWindow.setContent(contentString);
     }
 
-    function toggleBounce() {
-      if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-      } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-
-    }
-
     function takePicture() {
+      document.getElementById("picture-status").style.visibility = 'visible';
       console.log("picture taken");
-      window.open("Picture taken!");
-    }
-
-    //event handlers
-    function showMap(){
-      document.getElementById("map").addClass('visible');
-      document.getElementById("map").removeClass('hidden');
-      document.getElementById("report").addClass('hidden');
-      document.getElementById("report").removeClass('visible');
-    }
-
-    function selectType(type){
-      if(type === "Suggestion");
     }
 
 
