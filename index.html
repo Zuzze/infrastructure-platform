@@ -4,6 +4,9 @@
     <title>Report</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css"
+         href="https://fonts.googleapis.com/css?family=Quantico">
+
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -15,7 +18,8 @@
         height: 80%;
         margin: 5px;
         padding: 0;
-        font-family: sans-serif;
+        font-family: 'Quantico', sans-serif;
+        background-color: #cefff5;
       }
 
       ul {
@@ -23,7 +27,6 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: #333;
   }
 
   li {
@@ -56,15 +59,32 @@
   display: inline-block;
 }
 
+#problem-location, #problem-description {
+  width: 80%;
+  max-width: 500px;
+  font-family: 'Quantico', sans-serif;
+}
+
+#problem-description {
+  height: 100px;
+  text-align: top;
+  line-height:
+  font-family: 'Quantico', sans-serif;
+}
+
 #report-btn {
   font-size: 1.2em;
   width: 80%;
   height: 50px;
-  background-color: #4CAF50
+  max-width: 500px;
+  background-color: #77c8ce;
+  border: none;
+  font-weight: bold;
+  font-family: 'Quantico', sans-serif;
 }
 
 #estimated-time {
-  font-family: sans-serif;
+  font-family: 'Quantico', sans-serif;
 }
 
 #snackbar {
@@ -108,18 +128,75 @@
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+
+.icon-bar {
+    width: 100%; /* Full-width */
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #555; /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+}
+
+.icon-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 20%; /* Equal width (5 icons with 20% width each = 100%)
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 20px; /* Increased font size */
+    text-decoration: none;
+}
+
+.icon-bar a:hover {
+    background-color: #000; /* Add a hover color */
+}
+
+.active {
+    background-color: #77c8ce; /* Add an active/current color */
+}
+
+#expand {
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+section {
+  padding: 0 20px;
+}
+#toggle:checked ~ #expand {
+  height: 250px;
+}
+#toggle:checked ~ label::before {
+  content: "-";
+}
+
     </style>
 
   </head>
   <body>
-    <navbar>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--<navbar style="position: fixed; z-index: 1;">
       <ul>
-        <li><a href="default.asp">News</a></li>
-        <li><a href="news.asp">Map</a></li>
+        <li><a href="#map">Map</a></li>
         <li><a href="#report">Report</a></li>
-        <li><a href="about.asp">About</a></li>
+        <li><a href="#news">Profile</a></li>
+        <li><a href="about.asp">Hub</a></li>
       </ul>
-    </navbar>
+    </navbar>-->
+
+
+    <div class="icon-bar" style="position: fixed; z-index: 1;">
+      <a class="active" href="#map"><i class="fa fa-map"></i> Map</a>
+      <a href="#report"><i class="fa fa-plus"></i> Report</a>
+      <a href="#"><i class="fa fa-user"></i> Profile</a>
+      <a href="#"><i class="fa fa-users"></i> Hub</a>
+    </div>
+
+
     <div id="map"></div>
 
     <!--<div id="road-condition-map">
@@ -127,28 +204,30 @@
     </div>-->
 
     <div id="report" align="center">
-      <h2>Report Problem</h2>
-      <h3>Picture (optional)</h3>
-      <img alt="camera-icon" width="20%" src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-camera-128.png"/>
-      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text" width="80%"</input>
-      <h3>Type</h3>
+      <h2>REPORT</h2>
+      <img alt="camera-icon" width="20%" src="https://freeiconshop.com/wp-content/uploads/edd/camera-flat.png" onclick="window.open('pic')"/>
+      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text"</input>
       <form id=type>
-        <input type="radio" name="problem-type" value="Blocked" checked>Path Blocked
-        <input type="radio" name="problem-type" value="Be Careful">Attention
-        <input type="radio" name="problem-type" value="Suggest improvement">Suggestion
+        <input type="radio" name="problem-type" value="Fault" checked>Fault
+        <input type="radio" name="problem-type" value="Attention">Attention
+        <input type="radio" name="problem-type" value="Suggestion">Suggestion
       </form>
-      <h3>Estimated length</h3>
+      <input id="toggle" type="checkbox">
+      <label for="toggle">Add details</label>
+      <div id="expand">
+      <h3>DURATION</h3>
       <form id=time>
         <input type="radio" name="duration" value="Temporary" checked>Temporary
         <input type="radio" name="duration" value="Permanent">Permanent until
         <input type="date" data-date-inline-picker="true" id="estimated-time">
       </form>
-      <h3>Estimated length</h3>
+      <h3>SEVERITY</h3>
       <form id=severity>
         <input type="radio" name="severity" value="Urgent" checked>Urgent
         <input type="radio" name="severity" value="not-urgent">Not urgent
       </form>
-      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" width="80%"></input>
+      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)"></input>
+    </div>
       <button id="report-btn" type="button" onclick="addProblem()" align="center">Send Report!</button>
     </div>
 
@@ -165,7 +244,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 60.2045577, lng: 24.6568111},
-          zoom: 17
+          zoom: 15
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
         /*var userMarker = new google.maps.Marker({
@@ -199,8 +278,9 @@
 
         var bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
-      }
 
+
+      }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -217,11 +297,13 @@
         map: map,
         title: 'Hello World!'
       });
+      marker.addListener('click', showReportInfo(marker));
       console.log(marker);
       console.log("problem added");
-      showNotification("Thank You");
+      //showNotification("Thank You");
         //marker.addListener('click', toggleBounce);
       }
+
 
     function showNotification(message){
       pos = position
@@ -230,12 +312,25 @@
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
+    function showReportInfo(marker){
+      var reportPosition = marker.position;
+      var infoWindow = new google.maps.InfoWindow({map: map});
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Report content here');
+    }
+
     function toggleBounce() {
       if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
       } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
       }
+
+    }
+
+    function takePicture() {
+      console.log("picture taken");
+      window.open("Picture taken!");
     }
 
     </script>
