@@ -11,7 +11,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 500px;
+        height: 200px;
         margin-top:10px;
       }
       /* Optional: Makes the sample page fill the window. */
@@ -213,11 +213,12 @@ section {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <div class="icon-bar" style="position: fixed; z-index: 1;">
-      <a class="active" href="index.html"><i class="fa fa-map"></i> Map</a>
-      <a href="report.html"><i class="fa fa-plus"></i> Report</a>
+      <a href="index.html"><i class="fa fa-map"></i> Map</a>
+      <a class="active" href="report.html"><i class="fa fa-plus"></i> Report</a>
       <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
       <a href="hub.html"><i class="fa fa-users"></i> Hub</a>
       <a href="about.html"><i class="fa fa-info"></i> About</a>
+
     </div>
 
 
@@ -226,6 +227,53 @@ section {
     <!--<div id="road-condition-map">
       <iframe src="https://www.google.com/maps/d/embed?mid=11mn922SZMwNs3OK30sIMiNvByt8" width="100%" height="480"></iframe>
     </div>-->
+
+    <div id="report" align="center">
+      <h2>REPORT</h2>
+      <div id="mandatory">
+      <img alt="camera-icon" width="150px" src="img/camera.png" onclick="takePicture()"/>
+      <div><p id="picture-status" style="visibility: hidden">Picture saved<p></div>
+      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text"</input>
+      <form id=type>
+        <label class="type-icon">
+        <input type="radio" name="problem-type" value="Fault" checked onclick="updateType(value)">
+        <img src="img/fault-large.png"
+        </label>
+        <label class="type-icon">
+        <input type="radio" name="problem-type" value="Attention" onclick="updateType(value)">
+        <img src="img/attention-large.png"
+        </label>
+      <label class="type-icon">
+        <input type="radio" name="problem-type" value="Suggestion" onclick="updateType(value)">
+        <img src="img/suggestion-large.png"
+      </label
+      </form>
+      <p id="type-field">Fault</p>
+      <br>
+      <!--<input id="toggle" type="checkbox">
+      <label for="toggle">Add details</label>
+      <br>
+      <div id="expand">-->
+      <div id="optional">
+      <h3>DURATION</h3>
+      <form id=time>
+        <input type="radio" name="duration" value="Temporary" checked>Temporary
+        <input type="radio" name="duration" value="Permanent">Permanent until
+        <input type="date" data-date-inline-picker="true" id="estimated-time">
+      </form>
+      <h3>SEVERITY</h3>
+      <form id=severity>
+        <input type="radio" name="severity" value="Urgent" checked>Urgent
+        <input type="radio" name="severity" value="not-urgent">Not urgent
+      </form>
+      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" style="margin-bottom: 20px;"></input>
+    </div>
+  </div>
+      <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
+    </div>
+
+    <div id="snackbar">Thank You! You will be informed when the report is handled.</div>
+
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -234,16 +282,15 @@ section {
       var pos; //current pos 60.1700831,24.8056837
       var map;
       var selectedType = 'Fault'
-      var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
       var icons = {
        attention: {
-         icon: iconBase + '/icon41.png'
+         icon: 'img/attention-icon.png'
        },
        suggestion: {
-         icon: iconBase + '/icon35.png'
+         icon: 'img/suggestion-icon.png'
        },
        fault: {
-         icon: iconBase + '/icon33.png'
+         icon: 'img/fault-icon.png'
        }
       };
 
@@ -264,7 +311,7 @@ section {
             //add marker to current location
             var marker = new google.maps.Marker({
               position: pos,
-              icon: 'http://maps.google.com/mapfiles/kml/pal3/icon40.png',
+              icon: 'img/location.png',
               map: map
             });
             map.setCenter(pos);
@@ -311,7 +358,7 @@ section {
                '<div id="bodyContent">'+
                '<p>Road blocked due to Construction site</p>'+
                '<br><small>Reported 1 minute ago</small><br>'+
-               '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
+               '<img src="img/like.png" alt="picture" style="width: 35px;"><br> 7 likes' +
                '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
                'See more...</a>' +
                '</div>'+
@@ -345,11 +392,11 @@ section {
         //add marker to the map
         var iconPath;
         if (selectedType == 'Fault'){
-          iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
+          iconPath = 'img/fault-icon.png';
         } else if (selectedType == 'Attention') {
-            iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon41.png';
+            iconPath = 'img/attention-icon,png';
         } else {
-          iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
+          iconPath = 'img/suggestion-icon.png';
         }
         console.log("icon path " + iconPath);
         console.log("report type: " + selectedType);
