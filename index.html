@@ -11,7 +11,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 500px;
+        height: 510px;
         margin-top:10px;
       }
       /* Optional: Makes the sample page fill the window. */
@@ -158,7 +158,7 @@
 .icon-bar a {
     float: left; /* Float links side by side */
     text-align: center; /* Center-align text */
-    width: 20%; /* Equal width (5 icons with 20% width each = 100%)
+    width: 33%; /* Equal width (5 icons with 20% width each = 100%)
     transition: all 0.3s ease; /* Add transition for hover effects */
     color: white; /* White text color */
     font-size: 20px; /* Increased font size */
@@ -209,20 +209,19 @@ section {
 
   </head>
   <body>
+    <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
+      <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">MAP</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
+    </div>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div class="icon-bar" style="position: fixed; z-index: 1;">
-      <a class="active" href="index.html"><i class="fa fa-map"></i> Map</a>
-      <a href="report.html"><i class="fa fa-plus"></i> Report</a>
-      <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
-      <a href="hub.html"><i class="fa fa-users"></i> Hub</a>
-      <a href="about.html"><i class="fa fa-info"></i> About</a>
+    <div id="map" style="margin-top:30px;"></div>
+
+    <div class="icon-bar" style="position: fixed; z-index: 1; bottom:0px;">
+      <a href="index.html"><i class="fa fa-map-marker"></i> Map</a>
+      <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
+      <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
     </div>
-
-
-    <div id="map"></div>
-
     <!--<div id="road-condition-map">
       <iframe src="https://www.google.com/maps/d/embed?mid=11mn922SZMwNs3OK30sIMiNvByt8" width="100%" height="480"></iframe>
     </div>-->

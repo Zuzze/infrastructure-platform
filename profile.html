@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quantico">
 
   <body class="w3-content" style="max-width:1300px">
 
@@ -19,7 +20,7 @@
        * element that contains the map. */
 
       #map {
-        height: 500px;
+        height: 50px;
         margin-top: 10px;
       }
       /* Optional: Makes the sample page fill the window. */
@@ -67,29 +68,22 @@
       /*navbar*/
 
       .icon-bar {
-        width: 100%;
-        /* Full-width */
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        background-color: #555;
-        /* Dark-grey background */
-        /*overflow: auto; /* Overflow due to float */
+          width: 100%; /* Full-width */
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          background-color: #555; /* Dark-grey background */
+          overflow: auto; /* Overflow due to float */
       }
 
       .icon-bar a {
-        float: left;
-        /* Float links side by side */
-        text-align: center;
-        /* Center-align text */
-        width: 20%;
-        /* Equal width (5 icons with 20% width each = 100%)
-    transition: all 0.3s ease; /* Add transition for hover effects */
-        color: white;
-        /* White text color */
-        font-size: 20px;
-        /* Increased font size */
-        text-decoration: none;
+          float: left; /* Float links side by side */
+          text-align: center; /* Center-align text */
+          width: 33%; /* Equal width (5 icons with 20% width each = 100%)
+          transition: all 0.3s ease; /* Add transition for hover effects */
+          color: white; /* White text color */
+          font-size: 20px; /* Increased font size */
+          text-decoration: none;
       }
 
       .icon-bar a:hover {
@@ -105,36 +99,74 @@
 </head>
 
 <body>
-
+  <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
+    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">MY PROFILE</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:40px; padding:10px; padding-right:30px;" align="right">
+  </div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <div class="icon-bar" style="position: fixed; z-index: 1;">
-      <a href="index.html"><i class="fa fa-map"></i> Map</a>
-      <a href="report.html"><i class="fa fa-plus"></i> Report</a>
-      <a class="active" href="profile.html"><i class="fa fa-user"></i> Profile</a>
-      <a href="hub.html"><i class="fa fa-users"></i> Hub</a>
-      <a href="about.html"><i class="fa fa-info"></i> About</a>
-  <br>
-  <br>
-  <br>
-
+<br>
+<br>
+<br>
   <!-- <div class="w3-card-2 w3-round w3-white"> -->
   <div class="w3-container ">
 
     <div class="w3-center w3-card-2 w3-round">
-      <h3>About Me</h3>
+      <h3 style="font-family:'Quantico'">Kalle</h3>
       <img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-margin w3-circle" alt="Person" style="width:40%">
       <div class="w3-left-align w3-padding">
-        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme w3-large"></i> Karma</p>
         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme w3-large"></i> Helsinki, FI</p>
-        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme w3-large"></i> April 1, 1988</p>
         <p><i class="fa fa-bicycle fa-fw w3-margin-right w3-text-theme w3-large"></i> Avg: 125 km/week</p>
-        <p><i class="fa fa-cogs fa-fw w3-margin-right w3-text-theme w3-large"></i> 12000 Kcal burned this week</p>
-
+      </div>
+    </div>
+    <button type="button"><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme w3-large"></i>Settings</button>
+    <div class="w3-center w3-card-2 w3-round">
+      <h3 style="font-family:'Quantico'">History</h3>
+      <div class="w3-left-align w3-padding">
+        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme w3-large"></i> Total: 12 Reported issues</p>
+        <p><i class="fa fa-check-square fa-fw w3-margin-right w3-text-theme w3-large"></i> Handled: 5 issues</p>
+        <p><i class="fa fa-hourglass-half fa-fw w3-margin-right w3-text-theme w3-large"></i> Waiting: 7 issues</p>
+        <p><i class="fa fa-thumbs-o-up fa-fw w3-margin-right w3-text-theme w3-large"></i> Upvotes: 21 issues</p>
+        <p><i class="fa fa-thumbs-o-down fa-fw w3-margin-right w3-text-theme w3-large"></i> Downvotes: 1 issues</p>
+        <p><i class="fa fa-comment fa-fw w3-margin-right w3-text-theme w3-large"></i> Comments: 24 issues</p>
+      </div>
+    </div>
+    <div class="w3-center w3-card-2 w3-round">
+      <h3 style="font-family:'Quantico'">Notifications</h3>
+      <div class="w3-left-align w3-padding">
+        <p><i class="fa fa-thumbs-o-up fa-fw w3-margin-right w3-text-theme w3-large"></i> Aleksi upvoted your report (5 min ago)</p>
+        <p><i class="fa fa-thumbs-o-up fa-fw w3-margin-right w3-text-theme w3-large"></i> Maija upvoted your report (20 min ago)</p>
+        <p><i class="fa fa-comment fa-fw w3-margin-right w3-text-theme w3-large"></i> City of espoo answered to your report (1 hour ago)</p>
+        <p><i class="fa fa-comment fa-fw w3-margin-right w3-text-theme w3-large"></i> Maija commented on your report (2 hours ago)</p>
+      </div>
+    </div>
+    <div class="w3-center w3-card-2 w3-round">
+      <h3 style="font-family:'Quantico'">Achievements</h3>
+      <div class="w3-left-align w3-padding" align="center">
+        <img src="img/badges.png" alt="achievements">
+      </div>
+        </div>
+      <div class="w3-center w3-card-2 w3-round">
+        <h3 style="font-family:'Quantico'">Ranking</h3>
+        <div class="w3-left-align w3-padding">
+          <h4>Most upvoted problems</h4>
+          <p> 1. Keilaniemi metro construction site (57 upvotes)</p>
+          <p> 2. Itätuulentie 21, Tapiola (51 upvotes)</p>
+          <p> 3. Avaruuskuja 9 (37 upvotes)
+          <h4>Top Commentators</h4>
+          <p> 1. Hilkka22 (211 comments)</p>
+          <p> 2. Allu (198 comments)</p>
+          <p> 3. PenttiK (150 comments)
       </div>
     </div>
   </div>
+  <br>
+  <br>
+  <br>
+  </div>
+  <div class="icon-bar" style="position: fixed; z-index: 1; bottom:0px;">
+    <a href="index.html"><i class="fa fa-map-marker"></i> Map</a>
+    <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
+    <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
   </div>
 
   <script>

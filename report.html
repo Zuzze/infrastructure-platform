@@ -22,18 +22,15 @@
         font-family: 'Quantico', sans-serif;
         background-color: #fff;
       }
-
       ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       overflow: hidden;
   }
-
   li {
       float: left;
   }
-
   li a {
       display: block;
       color: white;
@@ -41,12 +38,10 @@
       padding: 14px 16px;
       text-decoration: none;
   }
-
   /* Change the link color to #111 (black) on hover */
   li a:hover {
       background-color: #111;
   }
-
   .txt-field{
     width: 100%;
     height: 30px;
@@ -54,34 +49,28 @@
     display: block;
     margin: 5px;
   }
-
   /* dropdown */
 #problem-type {
   display: inline-block;
 }
-
 #problem-location, #problem-description {
   width: 80%;
   max-width: 500px;
   font-family: 'Quantico', sans-serif;
   font-size: 0.8em;
 }
-
 #problem-description {
   height: 100px;
   text-align: top;
   line-height:
   font-family: 'Quantico', sans-serif;
 }
-
 .hidden {
   display:none;
 }
-
 .visible {
   display: block;
 }
-
 #report-btn {
   font-size: 1.2em;
   width: 100px;
@@ -96,12 +85,9 @@
   font-weight: bold;
   font-family: 'Quantico', sans-serif;
 }
-
 #estimated-time {
   font-family: 'Quantico', sans-serif;
 }
-
-
 /*Snackbar*/
 #snackbar {
     visibility: hidden;
@@ -118,33 +104,27 @@
     bottom: 30px;
     font-size: 17px;
 }
-
 #snackbar.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}
 }
-
 @keyframes fadein {
     from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}
 }
-
 @-webkit-keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
-
 @keyframes fadeout {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
-
 /*navbar*/
 .icon-bar {
     width: 100%; /* Full-width */
@@ -158,17 +138,15 @@
 .icon-bar a {
     float: left; /* Float links side by side */
     text-align: center; /* Center-align text */
-    width: 20%; /* Equal width (5 icons with 20% width each = 100%)
+    width: 33%; /* Equal width (5 icons with 20% width each = 100%)
     transition: all 0.3s ease; /* Add transition for hover effects */
     color: white; /* White text color */
     font-size: 20px; /* Increased font size */
     text-decoration: none;
 }
-
 .icon-bar a:hover {
     background-color: #000; /* Add a hover color */
 }
-
 /*optional report data*/
 #expand {
   height: 0px;
@@ -185,11 +163,9 @@ section {
 #toggle:checked ~ label::before {
   content: "-";
 }
-
 .active {
   background-color: #77c8ce;
 }
-
 /*type selection*/
 .type-icon > input{ /* HIDE RADIO */
   visibility: hidden; /* Makes input not-clickable */
@@ -204,34 +180,25 @@ section {
   border:2px solid #f00;
   background-color: #77c8ce;
 }
-
     </style>
 
   </head>
   <body>
+    <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
+      <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">REPORT</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
+    </div>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div class="icon-bar" style="position: fixed; z-index: 1;">
-      <a href="index.html"><i class="fa fa-map"></i> Map</a>
-      <a class="active" href="report.html"><i class="fa fa-plus"></i> Report</a>
-      <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
-      <a href="hub.html"><i class="fa fa-users"></i> Hub</a>
-      <a href="about.html"><i class="fa fa-info"></i> About</a>
-
-    </div>
-
-
-    <div id="map"></div>
+    <div style="margin-top:30px;" id="map"></div>
 
     <!--<div id="road-condition-map">
       <iframe src="https://www.google.com/maps/d/embed?mid=11mn922SZMwNs3OK30sIMiNvByt8" width="100%" height="480"></iframe>
     </div>-->
 
     <div id="report" align="center">
-      <h2>REPORT</h2>
       <div id="mandatory">
-      <img alt="camera-icon" width="150px" src="img/camera.png" onclick="takePicture()"/>
+      <img alt="camera-icon" width="100px" src="img/camera.png" onclick="takePicture()"/>
       <div><p id="picture-status" style="visibility: hidden">Picture saved<p></div>
       <input class="txt-field" id="problem-location" placeholder="Current Location" type="text"</input>
       <form id=type>
@@ -274,6 +241,12 @@ section {
 
     <div id="snackbar">Thank You! You will be informed when the report is handled.</div>
 
+    <div class="icon-bar" style="position: fixed; z-index: 1; bottom:0px;">
+      <a href="index.html"><i class="fa fa-map-marker"></i> Map</a>
+      <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
+      <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
+    </div>
+
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -293,13 +266,11 @@ section {
          icon: 'img/fault-icon.png'
        }
       };
-
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 60.2045577, lng: 24.6568111},
           zoom: 15
         });
-
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -307,7 +278,6 @@ section {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-
             //add marker to current location
             var marker = new google.maps.Marker({
               position: pos,
@@ -315,7 +285,6 @@ section {
               map: map
             });
             map.setCenter(pos);
-
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -326,10 +295,8 @@ section {
           {lat: 60.2045577, lng: 24.6568111
           };
         }
-
         var bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
-
         //init existing problems
        var features = [
          {
@@ -371,22 +338,18 @@ section {
     });
   });
 }
-
-
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
                               'No location found, please turn GPS on' :
                               'Error: Your browser doesn\'t support geolocation.');
       }
-
       function updateType(type){
         selectedType = type;
         console.log(document);
         document.getElementById("type-field").innerHTML = selectedType;
         console.log(type);
       }
-
       // Create marker for new problem
       function addProblem() {
         //add marker to the map
@@ -406,7 +369,6 @@ section {
         map: map,
         title: selectedType
       });
-
       //add info window to problem
       var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
             '<h2>'+selectedType+'</h2>'+
@@ -421,7 +383,6 @@ section {
             'See more...</a>' +
             '</div>'+
             '</div>';
-
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -432,13 +393,11 @@ section {
       console.log("problem added");
       showNotification();
     }
-
     function showNotification(){
       var x = document.getElementById("snackbar")
       x.className = "show";
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
-
     function showReportInfo(marker, type){
       var reportPosition = marker.position;
       var infoWindow = new google.maps.InfoWindow({map: map});
@@ -461,7 +420,6 @@ section {
             '</div>'+
             '</div>';
             infoWindow.setContent(contentString);
-
             var infowindow = new google.maps.InfoWindow({
               content: contentString
             });
@@ -471,12 +429,10 @@ section {
             console.log(marker);
             console.log("show info");
     }
-
     function takePicture() {
       document.getElementById("picture-status").style.visibility = 'visible';
       console.log("picture taken");
     }
-
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6Fj_3whrrl1P6BCTW9ZhA9iHx7tsU8k&callback=initMap">

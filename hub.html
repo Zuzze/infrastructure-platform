@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quantico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <body class="w3-content" style="max-width:1300px">
@@ -70,29 +70,22 @@
       /*navbar*/
 
       .icon-bar {
-        width: 100%;
-        /* Full-width */
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        background-color: #555;
-        /* Dark-grey background */
-        /*overflow: auto; /* Overflow due to float */
+          width: 100%; /* Full-width */
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          background-color: #555; /* Dark-grey background */
+          overflow: auto; /* Overflow due to float */
       }
 
       .icon-bar a {
-        float: left;
-        /* Float links side by side */
-        text-align: center;
-        /* Center-align text */
-        width: 20%;
-        /* Equal width (5 icons with 20% width each = 100%)
-    transition: all 0.3s ease; /* Add transition for hover effects */
-        color: white;
-        /* White text color */
-        font-size: 20px;
-        /* Increased font size */
-        text-decoration: none;
+          float: left; /* Float links side by side */
+          text-align: center; /* Center-align text */
+          width: 33%; /* Equal width (5 icons with 20% width each = 100%)
+          transition: all 0.3s ease; /* Add transition for hover effects */
+          color: white; /* White text color */
+          font-size: 20px; /* Increased font size */
+          text-decoration: none;
       }
 
       .icon-bar a:hover {
@@ -113,25 +106,20 @@
 </head>
 
 <body>
+  <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
+    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">NEWS</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:40px; padding:10px; padding-right:30px;" align="right">
+  </div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <div class="icon-bar" style="position: fixed; z-index: 1;">
-    <a  href="index.html"><i class="fa fa-map"></i> Map</a>
-    <a href="report.html"><i class="fa fa-plus"></i> Report</a>
-    <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
-    <a class="active" href="hub.html"><i class="fa fa-users"></i> Hub</a>
-    <a href="about.html"><i class="fa fa-info"></i> About</a>
-  <br>
-  <br>
-  <br>
+<br>
+<br>
   <!-- <div class w3-container_base> -->
   <div class="w3-container w3-card-2 w3-white w3-round w3-margin">
     <!-- <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
     <span class="w3-right w3-opacity">1 min</span>
     <!-- <h4>John Doe</h4><br> -->
-    <h5>Espoonlahti</h5>
-    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <h5>Espoo begins to fix potholes of Tapiola next week </h5>
+    <p> Winter has left lots of potholes in Länsituulentie. Espoo will start fixing these in the beginning of the next week. Road will be blocked and detour will be redirected via Pohjantie.</p>
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half">
         <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
@@ -145,11 +133,11 @@
     <!-- <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
     <span class="w3-right w3-opacity">55 min</span>
     <!-- <h4>John Doe</h4><br> -->
-    <h5>Otaniemi</h5>
-    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <h5>More bike storage to Otaniemi coming</h5>
+    <p>Espoo has received various complaints about limited parking possibilities in Otaniemi area. New parking places will be installed in June next to Jämeräntaival 2.</p>
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half">
-        <img src="http://1.bp.blogspot.com/-4aNfv3U29Hs/USi3w4KraFI/AAAAAAAAPBE/AiG0J-vhjUk/s1600/DSCF0930.JPG" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+        <img src="http://www.kulkulaari.fi/sites/default/files/picture_416.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
       </div>
     </div>
     <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
@@ -160,8 +148,8 @@
     <!-- <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
     <span class="w3-right w3-opacity">1 h 25 min</span>
     <!-- <h4>John Doe</h4><br> -->
-    <h5>Helsinki - Kamppi</h5>
-    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <h5>Kamppi shopping center area will be blocked </h5>
+    <p>Kamppi shopping center area will be blocked from cycling traffic due to election event today between 12-18.</p>
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half">
         <img src="https://igx.4sqi.net/img/general/600x600/pENUVzTsZ3twReDWBAOHtQHXfvXuS6kDJKXS3cn3dpM.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
@@ -172,6 +160,11 @@
   </div>
   </div>
 
+  </div>
+  <div class="icon-bar" style="position: fixed; z-index: 1; bottom:0px;">
+    <a href="index.html"><i class="fa fa-map-marker"></i> Map</a>
+    <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
+    <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
   </div>
   <script>
   </script>
