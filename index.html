@@ -234,24 +234,34 @@ section {
       var map;
       var selectedType = 'Fault'
       var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
+      var iconPath;
+      if (selectedType == 'Fault'){
+        iconPath = 'img/fault-icon.png';
+      } else if (selectedType == 'Attention') {
+          iconPath = 'img/attention-icon,png';
+      } else {
+        iconPath = 'img/suggestion-icon.png';
+      }
+
+      var pos; //current pos 60.1700831,24.8056837
+      var map;
+      var selectedType = 'Fault'
       var icons = {
        attention: {
-         icon: iconBase + '/icon41.png'
+         icon: 'img/attention-icon.png'
        },
        suggestion: {
-         icon: iconBase + '/icon35.png'
+         icon: 'img/suggestion-icon.png'
        },
        fault: {
-         icon: iconBase + '/icon33.png'
+         icon: 'img/fault-icon.png'
        }
       };
-
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 60.2045577, lng: 24.6568111},
           zoom: 15
         });
-
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -259,15 +269,13 @@ section {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
-
             //add marker to current location
             var marker = new google.maps.Marker({
               position: pos,
-              icon: 'http://maps.google.com/mapfiles/kml/pal3/icon40.png',
+              icon: 'img/location.png',
               map: map
             });
             map.setCenter(pos);
-
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
@@ -278,10 +286,8 @@ section {
           {lat: 60.2045577, lng: 24.6568111
           };
         }
-
         var bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
-
         //init existing problems
        var features = [
          {
@@ -302,17 +308,35 @@ section {
            icon: icons[feature.type].icon,
            map: map
          });
+
+         var iconPath;
+         var description;
+         var picPath;
+         if (feature.type == 'fault'){
+           iconPath = 'img/fault-icon.png';
+           description = "Road blocked due to construction site";
+           picPath = 'img/blocked.png';
+         } else if (feature.type == 'attention') {
+             iconPath = 'img/attention-icon.png';
+             description = "Unclear traffic rules due to detour, be careful";
+             picPath = 'img/attention.png';
+         } else {
+           iconPath = 'img/suggestion-icon.png';
+           description = "Add safe bike park here";
+           picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
+         }
+
          var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
                '<h2>'+feature.type+'</h2>'+
                '<div id="siteNotice">'+
-               '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
+               '<img src='+ picPath + ' alt="picture" style="max-width: 130px;">' +
                '</div>'+
                '<div id="bodyContent">'+
-               '<p>Road blocked due to Construction site</p>'+
-               '<br><small>Reported 1 minute ago</small><br>'+
+               '<p>' + description + '</p>'+
+               '<br><small>Reported 1 hour ago</small><br>'+
                '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-               '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
-               'See more...</a>' +
+               '<br><a href="report-description.html" style="font-size: 0.9em;" align="right"></a>'+
+               //'See more...</a>' +
                '</div>'+
                '</div>';
        var infowindow = new google.maps.InfoWindow({
@@ -343,12 +367,20 @@ section {
       function addProblem() {
         //add marker to the map
         var iconPath;
+        var description;
+        var picPath;
         if (selectedType == 'Fault'){
-          iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
+          iconPath = 'img/fault-icon.png';
+          description = "Road blocked due to construction site";
+          picPath = 'img/blocked.png';
         } else if (selectedType == 'Attention') {
-            iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon41.png';
+            iconPath = 'img/attention-icon.png';
+            description = "Unclear traffic rules due to detour, be careful";
+            picPath = 'img/attention.png';
         } else {
-          iconPath = 'http://maps.google.com/mapfiles/kml/pal3/icon35.png';
+          iconPath = 'img/suggestion-icon.png';
+          description = "Add safe bike park here";
+          picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
         }
         console.log("icon path " + iconPath);
         console.log("report type: " + selectedType);
@@ -363,10 +395,10 @@ section {
       var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
             '<h2>'+selectedType+'</h2>'+
             '<div id="siteNotice">'+
-            '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
+            '<img src='+ picPath + ' alt="picture" style="max-width: 130px;">' +
             '</div>'+
             '<div id="bodyContent">'+
-            '<p>Road blocked due to Construction site</p>'+
+            '<p>' + description + '</p>'+
             '<br><small>Reported 1 minute ago</small><br>'+
             '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
             '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+

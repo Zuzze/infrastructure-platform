@@ -85,6 +85,21 @@
   font-weight: bold;
   font-family: 'Quantico', sans-serif;
 }
+
+#pic-btn {
+  font-size: 1.2em;
+  width: 70px;
+  height: 20px;
+  color: black;
+  text-decoration: none;
+  padding: 10px 50px 10px 50px;
+  margin: 10px;
+  background-color: #77c8ce;
+  border: none;
+  font-weight: bold;
+  font-family: 'Quantico', sans-serif;
+}
+
 #estimated-time {
   font-family: 'Quantico', sans-serif;
 }
@@ -198,8 +213,10 @@ section {
 
     <div id="report" align="center">
       <div id="mandatory">
-      <img alt="camera-icon" width="100px" src="img/camera.png" onclick="takePicture()"/>
-      <div><p id="picture-status" style="visibility: hidden">Picture saved<p></div>
+        <br>
+      <img alt="camera-icon" width="50px" src="img/camera.png" onclick="takePicture()"/><br>
+      <br><a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()">Take Picture</a>
+      <p id="picture-status" style="visibility: hidden">Picture saved<p>
       <input class="txt-field" id="problem-location" placeholder="Current Location" type="text"</input>
       <form id=type>
         <label class="type-icon">
@@ -246,7 +263,10 @@ section {
       <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
       <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
     </div>
-
+<br>
+<br>
+<br>
+<br>
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -357,7 +377,7 @@ section {
         if (selectedType == 'Fault'){
           iconPath = 'img/fault-icon.png';
         } else if (selectedType == 'Attention') {
-            iconPath = 'img/attention-icon,png';
+            iconPath = 'img/attention-icon.png';
         } else {
           iconPath = 'img/suggestion-icon.png';
         }
@@ -372,15 +392,12 @@ section {
       //add info window to problem
       var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
             '<h2>'+selectedType+'</h2>'+
-            '<div id="siteNotice">'+
-            '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
-            '</div>'+
             '<div id="bodyContent">'+
-            '<p>Road blocked due to Construction site</p>'+
-            '<br><small>Reported 1 minute ago</small><br>'+
-            '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-            '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
-            'See more...</a>' +
+            '<p>Road blocked due to Construction site</p><br>'+
+            '<small>Reported 1 minute ago</small>'+
+            '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 20px;"><br> 1 upvote' +
+            //'<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
+            //'See more...</a>' +
             '</div>'+
             '</div>';
         var infowindow = new google.maps.InfoWindow({
