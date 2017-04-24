@@ -355,9 +355,6 @@ section {
            position: new google.maps.LatLng(60.2045577, 24.6568111),
            type: 'fault'
          }, {
-           position: new google.maps.LatLng(60.2055570, 24.6562111),
-           type: 'suggestion'
-         }, {
            position: new google.maps.LatLng(61.2045577, 24.6568116),
            type: 'suggestion'
          }, {
@@ -382,8 +379,31 @@ section {
            icon: icons[feature.type].icon,
            map: map
          });
+         /*var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
+               '<h2>'+Fault+'</h2>'+
+               '<div id="siteNotice">'+
+               '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
+               '</div>'+
+               '<div id="bodyContent">'+
+               '<p>Road blocked due to Construction site</p>'+
+               '<small>Reported 5 hours ago</small><br>'+
+               '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 12 likes' +
+               '<br><a href="#" style="font-size: 0.9em;" align="right">'+
+               'See more...</a>' +
+               '</div>'+
+               '</div>';
+
+           var marker1info = new google.maps.InfoWindow({
+             content: contentString
+           });
+         marker.addListener('click', function() {
+             marker1info.open(map, marker);
+           });*/
        });
-      }
+
+
+    }
+
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -426,9 +446,9 @@ section {
             '</div>'+
             '<div id="bodyContent">'+
             '<p>Road blocked due to Construction site</p>'+
-            '<small>Reported 1 minute ago</small><br>'+
+            '<br><small>Reported 1 minute ago</small><br>'+
             '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-            '<br><a href="#" style="font-size: 0.9em;" align="right">'+
+            '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
             'See more...</a>' +
             '</div>'+
             '</div>';
@@ -443,7 +463,6 @@ section {
       console.log("problem added");
       showNotification();
     }
-
 
     function showNotification(){
       var x = document.getElementById("snackbar")
@@ -486,7 +505,6 @@ section {
       document.getElementById("picture-status").style.visibility = 'visible';
       console.log("picture taken");
     }
-
 
     </script>
     <script async defer
