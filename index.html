@@ -265,30 +265,12 @@ section {
         <input type="radio" name="severity" value="Urgent" checked>Urgent
         <input type="radio" name="severity" value="not-urgent">Not urgent
       </form>
-    -->
+      -->
       <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)"></input>
     </div>
   </div>
       <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
     </div>
-
-    <!--<div id="profile" align="center">
-      <h3> PROFILE </h3>
-      <div class="box">
-        <h3>Notifications</h3>
-      <p> Notifications, settings<p>
-        <div
-      </div>
-    </div>
-
-    <div id="hub">
-      <h3> HUB </h3>
-      <p> News & Rankings <p>
-    </div>
-
-    <div id="about">
-      <h3> ABOUT </h3>
-    </div>-->
 
     <div id="snackbar">Thank You! You will be informed when the report is handled.</div>
 
@@ -352,57 +334,45 @@ section {
         //init existing problems
        var features = [
          {
-           position: new google.maps.LatLng(60.2045577, 24.6568111),
+           position: new google.maps.LatLng(60.17038,24.938442),
            type: 'fault'
          }, {
-           position: new google.maps.LatLng(61.2045577, 24.6568116),
+           position: new google.maps.LatLng(60.1870101,24.8193514),
            type: 'suggestion'
          }, {
-           position: new google.maps.LatLng(60.2045572, 24.7568115),
+           position: new google.maps.LatLng(60.1718263,24.9207661),
            type: 'attention'
-         }, {
-           position: new google.maps.LatLng(60.2245573, 24.6968119),
-           type: 'attention'
-         }, {
-           position: new google.maps.LatLng(60.9045580, 24.7568111),
-           type: 'attention'
-         }, {
-           position: new google.maps.LatLng(60.2945577, 24.6598120),
-           type: 'fault'
          }
-
        ];
-       // Create markers.
+       // Create markers
        features.forEach(function(feature) {
          var marker = new google.maps.Marker({
            position: feature.position,
            icon: icons[feature.type].icon,
            map: map
          });
-         /*var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
-               '<h2>'+Fault+'</h2>'+
+         var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
+               '<h2>'+feature.type+'</h2>'+
                '<div id="siteNotice">'+
                '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
                '</div>'+
                '<div id="bodyContent">'+
                '<p>Road blocked due to Construction site</p>'+
-               '<small>Reported 5 hours ago</small><br>'+
-               '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 12 likes' +
-               '<br><a href="#" style="font-size: 0.9em;" align="right">'+
+               '<br><small>Reported 1 minute ago</small><br>'+
+               '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
+               '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
                'See more...</a>' +
                '</div>'+
                '</div>';
-
-           var marker1info = new google.maps.InfoWindow({
-             content: contentString
-           });
-         marker.addListener('click', function() {
-             marker1info.open(map, marker);
-           });*/
+       var infowindow = new google.maps.InfoWindow({
+         content: contentString
        });
+     marker.addListener('click', function() {
+         infowindow.open(map, marker);
+    });
+  });
+}
 
-
-    }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
@@ -470,7 +440,7 @@ section {
       setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     }
 
-    function showReportInfo(marker){
+    function showReportInfo(marker, type){
       var reportPosition = marker.position;
       var infoWindow = new google.maps.InfoWindow({map: map});
       /*google.maps.event.addListener(marker, 'click', function() {
@@ -478,27 +448,29 @@ section {
       });
       */
       infoWindow.setPosition(pos);
-      var contentString = '<div id="content">'+
-          '<div id="siteNotice">'+
-          '</div>'+
-          '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-          '<div id="bodyContent">'+
-          '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-          'sandstone rock formation in the southern part of the '+
-          'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-          'south west of the nearest large town, Alice Springs; 450&#160;km '+
-          '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-          'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-          'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-          'Aboriginal people of the area. It has many springs, waterholes, '+
-          'rock caves and ancient paintings. Uluru is listed as a World '+
-          'Heritage Site.</p>'+
-          '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-          'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-          '(last visited June 22, 2009).</p>'+
-          '</div>'+
-          '</div>';
+      var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
+            '<h2>'+type+'</h2>'+
+            '<div id="siteNotice">'+
+            '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
+            '</div>'+
+            '<div id="bodyContent">'+
+            '<p>Road blocked due to Construction site</p>'+
+            '<br><small>Reported 1 minute ago</small><br>'+
+            '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
+            '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
+            'See more...</a>' +
+            '</div>'+
+            '</div>';
             infoWindow.setContent(contentString);
+
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+            console.log(marker);
+            console.log("show info");
     }
 
     function takePicture() {
