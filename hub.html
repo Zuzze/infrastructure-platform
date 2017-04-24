@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Report</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>Hub</title>
+    <meta name="viewport" content="initial-scale=1.0, initial-scale=1">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css"
-         href="https://fonts.googleapis.com/css?family=Quantico">
+    <!-- <link rel="stylesheet" type="text/css"
+         href="https://fonts.googleapis.com/css?family=Quantico"> -->
+
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <body class="w3-content" style="max-width:1300px">
 
     <style>
       /* Always set the map height explicitly to define the size of the div
@@ -16,11 +23,12 @@
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
-        height: 80%;
+        height: 100%;
         margin: 5px;
         padding: 0;
         font-family: 'Quantico', sans-serif;
         background-color: #fff;
+        overflow:auto;
       }
 
       ul {
@@ -83,6 +91,12 @@
   background-color: #77c8ce;
 }
 
+ /*div.w3-container_base {
+
+    height: 400px;
+    overflow: scroll;
+}*/
+
     </style>
 
   </head>
@@ -95,19 +109,43 @@
       <a href="profile.html"><i class="fa fa-user"></i> Profile</a>
       <a class="active" href="hub.html"><i class="fa fa-users"></i> Hub</a>
       <a href="about.html"><i class="fa fa-info"></i> About</a>
-
-
-
-      <div id="about" align="center" style="width:90%; display:block;">
-        <div>
+    </div>
           <br>
-          <h3>HUB</h3>
-          <p>News from the city, notifications and ranking lists</p>
-        <img src="img/hub.png" width="70%" alt="about-pic">
-        <p> add more here <p>
-        </div>
-      </div>
+          <br>
+          <br>
+          <!-- <div class w3-container_base> -->
+      <div class="w3-container w3-card-2 w3-white w3-round w3-margin">
+       <!-- <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
+       <span class="w3-right w3-opacity">1 min</span>
+       <!-- <h4>John Doe</h4><br> -->
+       <h5>Espoonlahti</h5>
+       <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+         <div class="w3-row-padding" style="margin:0 -16px">
+           <div class="w3-half">
+             <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+           </div>
+           </div>
+       <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+       <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+     </div>
 
+     <div class="w3-container w3-card-2 w3-white w3-round w3-margin">
+  <!-- <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> -->
+  <span class="w3-right w3-opacity">55 min</span>
+  <!-- <h4>John Doe</h4><br> -->
+  <h5>Otaniemi</h5>
+  <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <img src="http://1.bp.blogspot.com/-4aNfv3U29Hs/USi3w4KraFI/AAAAAAAAPBE/AiG0J-vhjUk/s1600/DSCF0930.JPG" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+      </div>
+      </div>
+  <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
+  <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
+</div>
+        </div>
+
+</div>
     <script>
     </script>
   </body>
