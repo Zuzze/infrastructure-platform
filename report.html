@@ -1,233 +1,303 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Report</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css"
-         href="https://fonts.googleapis.com/css?family=Quantico">
 
-    <style>
-      /* Always set the map height explicitly to define the size of the div
+<head>
+  <title>Report</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quantico">
+
+  <style>
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #map {
-        height: 300px;
-        margin-top:10px;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 80%;
-        margin: 5px;
-        padding: 0;
-        font-family: 'Quantico', sans-serif;
-        background-color: #fff;
-      }
-      ul {
+
+    #map {
+      height: 300px;
+      margin-top: 10px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+
+    html,
+    body {
+      height: 80%;
+      margin: 5px;
+      padding: 0;
+      font-family: 'Quantico', sans-serif;
+      background-color: #fff;
+    }
+
+    ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       overflow: hidden;
-  }
-  li {
+    }
+
+    li {
       float: left;
-  }
-  li a {
+    }
+
+    li a {
       display: block;
       color: white;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
-  }
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
+    }
+    /* Change the link color to #111 (black) on hover */
+
+    li a:hover {
       background-color: #111;
-  }
-  .txt-field{
-    width: 100%;
-    height: 30px;
-    font-size: 1.2em;
-    display: block;
-    margin: 5px;
-  }
-  /* dropdown */
-#problem-type {
-  display: inline-block;
-}
-#problem-location, #problem-description {
-  width: 80%;
-  max-width: 500px;
-  font-family: 'Quantico', sans-serif;
-  font-size: 0.8em;
-}
-#problem-description {
-  height: 100px;
-  text-align: top;
-  line-height:
-  font-family: 'Quantico', sans-serif;
-}
-.hidden {
-  display:none;
-}
-.visible {
-  display: block;
-}
-#report-btn {
-  font-size: 1.2em;
-  width: 100px;
-  height: 50px;
-  max-width: 500px;
-  color: black;
-  text-decoration: none;
-  padding: 20px 80px 20px 80px;
-  margin-bottom: 50px;
-  background-color: #77c8ce;
-  border: none;
-  font-weight: bold;
-  font-family: 'Quantico', sans-serif;
-}
+    }
 
-#pic-btn {
-  font-size: 1.2em;
-  width: 70px;
-  height: 20px;
-  color: black;
-  text-decoration: none;
-  padding: 10px 50px 10px 50px;
-  margin: 10px;
-  background-color: #77c8ce;
-  border: none;
-  font-weight: bold;
-  font-family: 'Quantico', sans-serif;
-}
+    .txt-field {
+      width: 100%;
+      height: 30px;
+      font-size: 1.2em;
+      display: block;
+      margin: 5px;
+    }
+    /* dropdown */
 
-#estimated-time {
-  font-family: 'Quantico', sans-serif;
-}
-/*Snackbar*/
-#snackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
-}
-#snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-@-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-}
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-}
-/*navbar*/
-.icon-bar {
-    width: 100%; /* Full-width */
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    background-color: #555; /* Dark-grey background */
-    overflow: auto; /* Overflow due to float */
-}
+    #problem-type {
+      display: inline-block;
+    }
 
-.icon-bar a {
-    float: left; /* Float links side by side */
-    text-align: center; /* Center-align text */
-    width: 33%; /* Equal width (5 icons with 20% width each = 100%)
+    #problem-location,
+    #problem-description {
+      width: 80%;
+      max-width: 500px;
+      font-family: 'Quantico', sans-serif;
+      font-size: 0.8em;
+    }
+
+    #problem-description {
+      height: 100px;
+      text-align: top;
+      line-height: font-family: 'Quantico', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    #report-btn {
+      font-size: 1.2em;
+      width: 100px;
+      height: 50px;
+      max-width: 500px;
+      color: black;
+      text-decoration: none;
+      padding: 20px 80px 20px 80px;
+      margin-bottom: 50px;
+      background-color: #77c8ce;
+      border: none;
+      font-weight: bold;
+      font-family: 'Quantico', sans-serif;
+    }
+
+    #pic-btn {
+      font-size: 1.2em;
+      width: 70px;
+      height: 20px;
+      color: black;
+      text-decoration: none;
+      padding: 10px 50px 10px 50px;
+      margin: 10px;
+      background-color: #77c8ce;
+      border: none;
+      font-weight: bold;
+      font-family: 'Quantico', sans-serif;
+    }
+
+    #estimated-time {
+      font-family: 'Quantico', sans-serif;
+    }
+    /*Snackbar*/
+
+    #snackbar {
+      visibility: hidden;
+      min-width: 250px;
+      margin-left: -125px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 2px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      left: 50%;
+      bottom: 30px;
+      font-size: 17px;
+    }
+
+    #snackbar.show {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+    /*navbar*/
+
+    .icon-bar {
+      width: 100%;
+      /* Full-width */
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: #555;
+      /* Dark-grey background */
+      overflow: auto;
+      /* Overflow due to float */
+    }
+
+    .icon-bar a {
+      float: left;
+      /* Float links side by side */
+      text-align: center;
+      /* Center-align text */
+      width: 33%;
+      /* Equal width (5 icons with 20% width each = 100%)
     transition: all 0.3s ease; /* Add transition for hover effects */
-    color: white; /* White text color */
-    font-size: 20px; /* Increased font size */
-    text-decoration: none;
-}
-.icon-bar a:hover {
-    background-color: #000; /* Add a hover color */
-}
-/*optional report data*/
-#expand {
-  height: 0px;
-  overflow: hidden;
-  transition: height 0.5s;
-}
-section {
-  padding: 0 20px;
-}
-#toggle:checked ~ #expand {
-  height: 250px;
-  content: "+";
-}
-#toggle:checked ~ label::before {
-  content: "-";
-}
-.active {
-  background-color: #77c8ce;
-}
-/*type selection*/
-.type-icon > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
-.type-icon > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-  height:50px;
-}
-.type-icon > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
-  background-color: #77c8ce;
-}
-    </style>
+      color: white;
+      /* White text color */
+      font-size: 20px;
+      /* Increased font size */
+      text-decoration: none;
+    }
 
-  </head>
-  <body>
-    <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
-      <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">REPORT</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
-    </div>
+    .icon-bar a:hover {
+      background-color: #000;
+      /* Add a hover color */
+    }
+    /*optional report data*/
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    #expand {
+      height: 0px;
+      overflow: hidden;
+      transition: height 0.5s;
+    }
 
-    <div style="margin-top:30px;" id="map"></div>
+    section {
+      padding: 0 20px;
+    }
 
-    <!--<div id="road-condition-map">
+    #toggle:checked~#expand {
+      height: 250px;
+      content: "+";
+    }
+
+    #toggle:checked~label::before {
+      content: "-";
+    }
+
+    .active {
+      background-color: #77c8ce;
+    }
+    /*type selection*/
+
+    .type-icon>input {
+      /* HIDE RADIO */
+      visibility: hidden;
+      /* Makes input not-clickable */
+      position: absolute;
+      /* Remove input from document flow */
+    }
+
+    .type-icon>input+img {
+      /* IMAGE STYLES */
+      cursor: pointer;
+      border: 2px solid transparent;
+      height: 50px;
+    }
+
+    .type-icon>input:checked+img {
+      /* (RADIO CHECKED) IMAGE STYLES */
+      border: 2px solid #f00;
+      background-color: #77c8ce;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
+    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">REPORT</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
+  </div>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <div style="margin-top:30px;" id="map"></div>
+
+  <!--<div id="road-condition-map">
       <iframe src="https://www.google.com/maps/d/embed?mid=11mn922SZMwNs3OK30sIMiNvByt8" width="100%" height="480"></iframe>
     </div>-->
 
-    <div id="report" align="center">
-      <div id="mandatory">
-        <br>
-      <img alt="camera-icon" width="50px" src="img/camera.png" onclick="takePicture()"/><br>
+  <div id="report" align="center">
+    <div id="mandatory">
+      <br>
+      <img alt="camera-icon" width="50px" src="img/camera.png" onclick="takePicture()" /><br>
       <br><a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()">Take Picture</a>
-      <p id="picture-status" style="visibility: hidden">Picture saved<p>
-      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text"</input>
-      <form id=type>
-        <label class="type-icon">
+      <p id="picture-status" style="visibility: hidden">Picture saved
+        <p>
+          <input class="txt-field" id="problem-location" placeholder="Current Location" type="text" </input>
+          <form id=type>
+            <label class="type-icon">
         <input type="radio" name="problem-type" value="Fault" checked onclick="updateType(value)">
         <img src="img/fault-large.png"
         </label>
-        <label class="type-icon">
+            <label class="type-icon">
         <input type="radio" name="problem-type" value="Attention" onclick="updateType(value)">
         <img src="img/attention-large.png"
         </label>
-      <label class="type-icon">
+            <label class="type-icon">
         <input type="radio" name="problem-type" value="Suggestion" onclick="updateType(value)">
         <img src="img/suggestion-large.png"
       </label
@@ -236,24 +306,24 @@ section {
       <br>
       <!--<input id="toggle" type="checkbox">
       <label for="toggle">Add details</label>
-      <br>
-      <div id="expand">-->
-      <div id="optional">
-      <h3>DURATION</h3>
-      <form id=time>
-        <input type="radio" name="duration" value="Temporary" checked>Temporary
-        <input type="radio" name="duration" value="Permanent">Permanent until
-        <input type="date" data-date-inline-picker="true" id="estimated-time">
-      </form>
-      <h3>SEVERITY</h3>
-      <form id=severity>
-        <input type="radio" name="severity" value="Urgent" checked>Urgent
-        <input type="radio" name="severity" value="not-urgent">Not urgent
-      </form>
-      <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" style="margin-bottom: 20px;"></input>
-    </div>
-  </div>
-      <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
+            <br>
+            <div id="expand">-->
+              <div id="optional">
+                <h3>DURATION</h3>
+                <form id=time>
+                  <input type="radio" name="duration" value="Temporary" checked>Temporary
+                  <input type="radio" name="duration" value="Permanent">Permanent until
+                  <input type="date" data-date-inline-picker="true" id="estimated-time">
+                </form>
+                <h3>SEVERITY</h3>
+                <form id=severity>
+                  <input type="radio" name="severity" value="Urgent" checked>Urgent
+                  <input type="radio" name="severity" value="not-urgent">Not urgent
+                </form>
+                <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" style="margin-bottom: 20px;"></input>
+              </div>
+            </div>
+            <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
     </div>
 
     <div id="snackbar">Thank You! You will be informed when the report is handled.</div>
@@ -263,33 +333,42 @@ section {
       <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
       <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
     </div>
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
       var pos; //current pos 60.1700831,24.8056837
+      //Business school
       var map;
       var selectedType = 'Fault'
       var icons = {
-       attention: {
-         icon: 'img/attention-icon.png'
-       },
-       suggestion: {
-         icon: 'img/suggestion-icon.png'
-       },
-       fault: {
-         icon: 'img/fault-icon.png'
-       }
+        attention: {
+          icon: 'img/attention-icon.png'
+        },
+        suggestion: {
+          icon: 'img/suggestion-icon.png'
+        },
+        fault: {
+          icon: 'img/fault-icon.png'
+        }
       };
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 60.2045577, lng: 24.6568111},
+          center: {
+            // lat: 60.2045577, lng: 24.6568111
+            lat: 60.171865,
+            lng: 24.923146
+          },
           zoom: 15
+        });
+        var infoWindow = new google.maps.InfoWindow({
+          map: map
         });
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -311,60 +390,64 @@ section {
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
-          pos =
-          {lat: 60.2045577, lng: 24.6568111
+          pos = { // lat: 60.2045577, lng: 24.6568111
+            lat: 60.171865,
+            lng: 24.923146
           };
+
         }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+            'No location found, please turn GPS on' :
+            'Error: Your browser doesn\'t support geolocation.');
+        }
+
+
         var bikeLayer = new google.maps.BicyclingLayer();
         bikeLayer.setMap(map);
         //init existing problems
-       var features = [
-         {
-           position: new google.maps.LatLng(60.17038,24.938442),
-           type: 'fault'
-         }, {
-           position: new google.maps.LatLng(60.1870101,24.8193514),
-           type: 'suggestion'
-         }, {
-           position: new google.maps.LatLng(60.1718263,24.9207661),
-           type: 'attention'
-         }
-       ];
-       // Create markers
-       features.forEach(function(feature) {
-         var marker = new google.maps.Marker({
-           position: feature.position,
-           icon: icons[feature.type].icon,
-           map: map
-         });
-         var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
-               '<h2>'+feature.type+'</h2>'+
-               '<div id="siteNotice">'+
-               '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
-               '</div>'+
-               '<div id="bodyContent">'+
-               '<p>Road blocked due to Construction site</p>'+
-               '<br><small>Reported 1 minute ago</small><br>'+
-               '<img src="img/like.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-               '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
-               'See more...</a>' +
-               '</div>'+
-               '</div>';
-       var infowindow = new google.maps.InfoWindow({
-         content: contentString
-       });
-     marker.addListener('click', function() {
-         infowindow.open(map, marker);
-    });
-  });
-}
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'No location found, please turn GPS on' :
-                              'Error: Your browser doesn\'t support geolocation.');
+        var features = [{
+          position: new google.maps.LatLng(60.17038, 24.938442),
+          type: 'fault'
+        }, {
+          position: new google.maps.LatLng(60.1870101, 24.8193514),
+          type: 'suggestion'
+        }, {
+          position: new google.maps.LatLng(60.1718263, 24.9207661),
+          type: 'attention'
+        }];
+        // Create markers
+        features.forEach(function(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+          var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
+            '<h2>' + feature.type + '</h2>' +
+            '<div id="siteNotice">' +
+            '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
+            '</div>' +
+            '<div id="bodyContent">' +
+            '<p>Road blocked due to Construction site</p>' +
+            '<br><small>Reported 1 minute ago</small><br>' +
+            '<img src="img/like.png" alt="picture" style="width: 35px;"><br> 7 likes' +
+            '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">' +
+            'See more...</a>' +
+            '</div>' +
+            '</div>';
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        });
       }
-      function updateType(type){
+
+      function updateType(type) {
         selectedType = type;
         console.log(document);
         document.getElementById("type-field").innerHTML = selectedType;
@@ -374,85 +457,92 @@ section {
       function addProblem() {
         //add marker to the map
         var iconPath;
-        if (selectedType == 'Fault'){
+        if (selectedType == 'Fault') {
           iconPath = 'img/fault-icon.png';
         } else if (selectedType == 'Attention') {
-            iconPath = 'img/attention-icon.png';
+          iconPath = 'img/attention-icon.png';
         } else {
           iconPath = 'img/suggestion-icon.png';
         }
         console.log("icon path " + iconPath);
         console.log("report type: " + selectedType);
         var marker = new google.maps.Marker({
-        position: pos,
-        icon: iconPath,
-        map: map,
-        title: selectedType
-      });
-      //add info window to problem
-      var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
-            '<h2>'+selectedType+'</h2>'+
-            '<div id="bodyContent">'+
-            '<p>Road blocked due to Construction site</p>'+
-            '<p>Reported 1 minute ago</p>'+
-            '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 20px;"><br> 1 upvote' +
-            //'<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
-            //'See more...</a>' +
-            '</div>'+
-            '</div>';
+          position: pos,
+          icon: iconPath,
+          map: map,
+          title: selectedType
+        });
+        //add info window to problem
+        var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
+          '<h2>' + selectedType + '</h2>' +
+          '<div id="bodyContent">' +
+          '<p>Road blocked due to Construction site</p>' +
+          '<p>Reported 1 minute ago</p>' +
+          '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 20px;"><br> 1 upvote' +
+          //'<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
+          //'See more...</a>' +
+          '</div>' +
+          '</div>';
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
-      marker.addListener('click', function() {
+        marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
-      console.log(marker);
-      console.log("problem added");
-      showNotification();
-    }
-    function showNotification(){
-      var x = document.getElementById("snackbar")
-      x.className = "show";
-      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    }
-    function showReportInfo(marker, type){
-      var reportPosition = marker.position;
-      var infoWindow = new google.maps.InfoWindow({map: map});
-      /*google.maps.event.addListener(marker, 'click', function() {
-        console.log(marker.get('id'));
-      });
-      */
-      infoWindow.setPosition(pos);
-      var contentString = '<div align="center" id="content" style="max-width: 150px;">'+
-            '<h2>'+type+'</h2>'+
-            '<div id="siteNotice">'+
-            '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
-            '</div>'+
-            '<div id="bodyContent">'+
-            '<p>Road blocked due to Construction site</p>'+
-            '<br><small>Reported 1 minute ago</small>'+
-            '<br><img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-            '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">'+
-            'See more...</a>' +
-            '</div>'+
-            '</div>';
-            infoWindow.setContent(contentString);
-            var infowindow = new google.maps.InfoWindow({
-              content: contentString
-            });
-            marker.addListener('click', function() {
-              infowindow.open(map, marker);
-            });
-            console.log(marker);
-            console.log("show info");
-    }
-    function takePicture() {
-      document.getElementById("picture-status").style.visibility = 'visible';
-      console.log("picture taken");
-    }
+        console.log(marker);
+        console.log("problem added");
+        showNotification();
+      }
+
+      function showNotification() {
+        var x = document.getElementById("snackbar")
+        x.className = "show";
+        setTimeout(function() {
+          x.className = x.className.replace("show", "");
+        }, 3000);
+      }
+
+      function showReportInfo(marker, type) {
+        var reportPosition = marker.position;
+        var infoWindow = new google.maps.InfoWindow({
+          map: map
+        });
+        /*google.maps.event.addListener(marker, 'click', function() {
+          console.log(marker.get('id'));
+        });
+        */
+        infoWindow.setPosition(pos);
+        var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
+          '<h2>' + type + '</h2>' +
+          '<div id="siteNotice">' +
+          '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
+          '</div>' +
+          '<div id="bodyContent">' +
+          '<p>Road blocked due to Construction site</p>' +
+          '<br><small>Reported 1 minute ago</small>' +
+          '<br><img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
+          '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">' +
+          'See more...</a>' +
+          '</div>' +
+          '</div>';
+        infoWindow.setContent(contentString);
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+        console.log(marker);
+        console.log("show info");
+      }
+
+      function takePicture() {
+        document.getElementById("picture-status").style.visibility = 'visible';
+        console.log("picture taken");
+      }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6Fj_3whrrl1P6BCTW9ZhA9iHx7tsU8k&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6Fj_3whrrl1P6BCTW9ZhA9iHx7tsU8k&callback=initMap">
     </script>
-  </body>
+</body>
+
 </html>
