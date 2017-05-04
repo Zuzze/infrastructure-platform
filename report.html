@@ -69,6 +69,9 @@
       max-width: 500px;
       font-family: 'Quantico', sans-serif;
       font-size: 0.8em;
+      border-style: solid;
+      border-color: lightgrey;
+      text-align: left;
     }
 
     #problem-description {
@@ -269,12 +272,10 @@
 
 <body>
   <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
-    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">REPORT</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
+    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">Report</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
   </div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <div style="margin-top:30px;" id="map"></div>
 
   <!--<div id="road-condition-map">
       <iframe src="https://www.google.com/maps/d/embed?mid=11mn922SZMwNs3OK30sIMiNvByt8" width="100%" height="480"></iframe>
@@ -283,38 +284,35 @@
   <div id="report" align="center">
     <div id="mandatory">
       <br>
-      <img alt="camera-icon" width="50px" src="img/camera.png" onclick="takePicture()" /><br>
-      <br><a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()">Take Picture</a>
+      <br>
+      <br><a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="20px" src="img/camera.png" onclick="takePicture()"/> Add Picture</a>
       <p id="picture-status" style="visibility: hidden">Picture saved
         <p>
           <input class="txt-field" id="problem-location" placeholder="Current Location" type="text" </input>
           <form id=type>
             <label class="type-icon">
-        <input type="radio" name="problem-type" value="Fault" checked onclick="updateType(value)">
+        <input type="radio" name="problem-type" value="Temporary Arrangements" checked onclick="updateType(value)">
         <img src="img/fault-large.png"
         </label>
             <label class="type-icon">
-        <input type="radio" name="problem-type" value="Attention" onclick="updateType(value)">
+        <input type="radio" name="problem-type" value="Road Condition" onclick="updateType(value)">
         <img src="img/attention-large.png"
         </label>
             <label class="type-icon">
-        <input type="radio" name="problem-type" value="Suggestion" onclick="updateType(value)">
+        <input type="radio" name="problem-type" value="Infrastructure Improvement" onclick="updateType(value)">
         <img src="img/suggestion-large.png"
+      </label
+      <label class="type-icon">
+      <input type="radio" name="problem-type" value="Other" onclick="updateType(value)">
+      <img src="img/suggestion-large.png"
       </label
       </form>
       <p id="type-field">Fault</p>
-      <br>
       <!--<input id="toggle" type="checkbox">
       <label for="toggle">Add details</label>
             <br>
             <div id="expand">-->
               <div id="optional">
-                <h3>DURATION</h3>
-                <form id=time>
-                  <input type="radio" name="duration" value="Temporary" checked>Temporary
-                  <input type="radio" name="duration" value="Permanent">Permanent until
-                  <input type="date" data-date-inline-picker="true" id="estimated-time">
-                </form>
                 <h3>SEVERITY</h3>
                 <form id=severity>
                   <input type="radio" name="severity" value="Urgent" checked>Urgent
@@ -322,6 +320,7 @@
                 </form>
                 <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" style="margin-bottom: 20px;"></input>
               </div>
+              <br>
             </div>
             <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
     </div>
@@ -330,7 +329,7 @@
 
     <div class="icon-bar" style="position: fixed; z-index: 1; bottom:0px;">
       <a href="index.html"><i class="fa fa-map-marker"></i> Map</a>
-      <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
+      <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i> Report</a>
       <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
     </div>
     <br>
@@ -357,95 +356,6 @@
           icon: 'img/fault-icon.png'
         }
       };
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {
-            // lat: 60.2045577, lng: 24.6568111
-            lat: 60.171865,
-            lng: 24.923146
-          },
-          zoom: 15
-        });
-        var infoWindow = new google.maps.InfoWindow({
-          map: map
-        });
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            //add marker to current location
-            var marker = new google.maps.Marker({
-              position: pos,
-              icon: 'img/location.png',
-              map: map
-            });
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-          pos = { // lat: 60.2045577, lng: 24.6568111
-            lat: 60.171865,
-            lng: 24.923146
-          };
-
-        }
-
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          infoWindow.setPosition(pos);
-          infoWindow.setContent(browserHasGeolocation ?
-            'No location found, please turn GPS on' :
-            'Error: Your browser doesn\'t support geolocation.');
-        }
-
-
-        var bikeLayer = new google.maps.BicyclingLayer();
-        bikeLayer.setMap(map);
-        //init existing problems
-        var features = [{
-          position: new google.maps.LatLng(60.17038, 24.938442),
-          type: 'fault'
-        }, {
-          position: new google.maps.LatLng(60.1870101, 24.8193514),
-          type: 'suggestion'
-        }, {
-          position: new google.maps.LatLng(60.1718263, 24.9207661),
-          type: 'attention'
-        }];
-        // Create markers
-        features.forEach(function(feature) {
-          var marker = new google.maps.Marker({
-            position: feature.position,
-            icon: icons[feature.type].icon,
-            map: map
-          });
-          var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
-            '<h2>' + feature.type + '</h2>' +
-            '<div id="siteNotice">' +
-            '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
-            '</div>' +
-            '<div id="bodyContent">' +
-            '<p>Road blocked due to Construction site</p>' +
-            '<br><small>Reported 1 minute ago</small><br>' +
-            '<img src="img/like.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-            '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">' +
-            'See more...</a>' +
-            '</div>' +
-            '</div>';
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-        });
-      }
 
       function updateType(type) {
         selectedType = type;
@@ -541,7 +451,6 @@
         console.log("picture taken");
       }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6Fj_3whrrl1P6BCTW9ZhA9iHx7tsU8k&callback=initMap">
     </script>
 </body>
 

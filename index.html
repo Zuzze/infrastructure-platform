@@ -5,7 +5,7 @@
   <title>Report</title>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quantico">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
 
   <style>
     /* Always set the map height explicitly to define the size of the div
@@ -22,7 +22,7 @@
       height: 80%;
       margin: 5px;
       padding: 0;
-      font-family: 'Quantico', sans-serif;
+      font-family: 'Roboto', sans-serif;
       background-color: #fff;
     }
 
@@ -67,14 +67,14 @@
     #problem-description {
       width: 80%;
       max-width: 500px;
-      font-family: 'Quantico', sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 0.8em;
     }
 
     #problem-description {
       height: 100px;
       text-align: top;
-      line-height: font-family: 'Quantico', sans-serif;
+      line-height: font-family: 'Roboto', sans-serif;
     }
 
     .hidden {
@@ -97,11 +97,11 @@
       background-color: #77c8ce;
       border: none;
       font-weight: bold;
-      font-family: 'Quantico', sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
 
     #estimated-time {
-      font-family: 'Quantico', sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
     /*Snackbar*/
 
@@ -255,7 +255,7 @@
 
 <body>
   <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
-    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">MAP</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
+    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">Map</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:25px; padding:10px; padding-right:30px;" align="right">
   </div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -264,7 +264,7 @@
 
   <div class="icon-bar" style="position: fixed; z-index: 1; bottom:0px;">
     <a href="index.html"><i class="fa fa-map-marker"></i> Map</a>
-    <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i></a>
+    <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i> Report</a>
     <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
   </div>
   <!--<div id="road-condition-map">
@@ -314,9 +314,9 @@
 
         zoom: 16
       });
-      var infoWindow = new google.maps.InfoWindow({
-        map: map
-      });
+      /*var infoWindow = new google.maps.InfoWindow({
+     map: map
+      });  */
       // Try HTML5 geolocation.
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
