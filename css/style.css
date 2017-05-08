@@ -7,7 +7,7 @@
 
 html,
 body {
-  height: 90%;
+  height: 80%;
   margin: 5px;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -57,6 +57,9 @@ li a:hover {
   max-width: 500px;
   font-family: 'Roboto', sans-serif;
   font-size: 0.8em;
+  border-style: solid;
+  border-color: lightgrey;
+  text-align: left;
 }
 
 #problem-description {
@@ -71,6 +74,10 @@ li a:hover {
 
 .visible {
   display: block;
+}
+
+#report {
+  margin: 50px 0px 50px 0px;
 }
 
 #report-btn {
@@ -88,13 +95,28 @@ li a:hover {
   font-family: 'Roboto', sans-serif;
 }
 
+#pic-btn {
+  font-size: 1.2em;
+  width: 70px;
+  height: 20px;
+  color: black;
+  text-decoration: none;
+  padding: 10px 50px 10px 50px;
+  margin: 10px;
+  background-color: #77c8ce;
+  border: none;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
 #estimated-time {
   font-family: 'Roboto', sans-serif;
 }
 /*Snackbar*/
 
 #snackbar {
-  visibility: hidden;
+  display: none;
+  visibility:hidden;
   min-width: 250px;
   margin-left: -125px;
   background-color: #333;
@@ -166,12 +188,12 @@ li a:hover {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  background-color: #77c8ce;
+  background-color: #2E87DD;
   color: white;
   /* Dark-grey background */
   overflow: auto;
-  font-size: 15px;
-  box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,0.2);
+  font-size: 1em;
+  /*box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,0.2);*/
   /* Overflow due to float */
 }
 
@@ -185,38 +207,24 @@ li a:hover {
 transition: all 0.3s ease; /* Add transition for hover effects */
   color: white;
   /* White text color */
-  font-size: 15px;
+  font-size: 20px;
   /* Increased font size */
   text-decoration: none;
 }
 
 .icon-bar a:hover {
-  background-color: #000;
+  background-color: white;
+  color: #4abdb6;
   /* Add a hover color */
 }
 /*optional report data*/
-
-#expand {
-  height: 0px;
-  overflow: hidden;
-  transition: height 0.5s;
-}
 
 section {
   padding: 0 20px;
 }
 
-#toggle:checked~#expand {
-  height: 250px;
-  content: "+";
-}
-
-#toggle:checked~label::before {
-  content: "-";
-}
-
 .active {
-  background-color: #77c8ce;
+  background-color: #77ceca;
 }
 /*type selection*/
 
@@ -238,5 +246,5 @@ section {
 .type-icon>input:checked+img {
   /* (RADIO CHECKED) IMAGE STYLES */
   border: 2px solid #f00;
-  background-color: #77c8ce;
+  background-color: #2E87DD;
 }
