@@ -269,7 +269,13 @@ li a:hover {
   background-color: #37A1FB;
   color: white;
 }
-/*type selection*/
+/*TYPE SELECTION*/
+
+.type-icon {
+  width: 100%;
+  background-color: #37A1FB;
+
+}
 
 .type-icon>input {
   /* HIDE RADIO */
@@ -277,16 +283,11 @@ li a:hover {
   /* Makes input not-clickable */
   position: absolute;
   /* Remove input from document flow */
-}
-
-.type-icon>input+img {
-  /* IMAGE STYLES */
   cursor: pointer;
-  border: 2px solid transparent;
-  height: 50px;
 }
 
-.type-icon>input:checked+img {
+
+.type-icon>input:checked {
   /* (RADIO CHECKED) IMAGE STYLES */
   border: 2px solid #f00;
   background-color: #2E87DD;
