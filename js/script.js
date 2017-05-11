@@ -457,11 +457,11 @@
     console.log("picture taken");
   }
 
-  function report() {
+  function showReportView() {
     document.getElementById("report").style.display = 'block';
-    document.getElementById("map").style.display = 'none';
+    document.getElementById("map-container").style.display = 'none';
     document.getElementById("snackbar").style.display = 'none';
+    document.getElementById("pageTitle").innerHTML = "Send Feedback";
   }
 
   //================== GENERAL FUNCTIONS ==========================
-  $(window).resize

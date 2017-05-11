@@ -18,7 +18,8 @@
 <body style="width:100%; height: 100%;">
   <!--top bar-->
   <div class="icon-bar navbar-top">
-    <a style="width:80%; padding-left:10%">Map</a>
+    <a href="profile.html" style="width:20%;"><img alt="icon" src="img/flat/settings.png">
+    <a id="pageTitle" style="width:60%;">Map</a>
     <a href="profile.html" style="width:20%;"><img alt="icon" src="img/flat/filter.png"></i></a>
   </div>
 
@@ -28,11 +29,12 @@
 </div>
 
 <!--report-->
-  <div id="report" align="center" style="display:none;">
-      <a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="20px" src="img/camera.png" onclick="takePicture()"/> Add Picture</a>
-      <p id="picture-status" style="visibility: hidden">Picture saved</p>
-
-      <input class="txt-field" id="problem-location" placeholder="Current Location" type="text" </input>
+  <div id="report" style="display:none;">
+    <div id="location-container">
+      <div class="line" style="width:10%"><img alt="location" src="img/flat/cursor.png" style="padding-top:10px; padding-right:10px;"></div>
+      <div class="line" style="width:80%"><input type="txt-field" id="problem-location" placeholder="Current Location" type="text"</input></div>
+      <div class="line" style="width:10%"><a id="report-from-map" href="#">Map</a></div>
+    </div>
           <form id=type>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Temporary Arrangements" checked onclick="updateType(value)">
@@ -52,13 +54,10 @@
           </form>
       <p id="type-field">Fault</p>
       <br>
-      <h3>SEVERITY</h3>
-        <form id=severity>
-          <input type="radio" name="severity" value="Urgent" checked>Urgent
-          <input type="radio" name="severity" value="not-urgent">Not urgent
-        </form>
           <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" style="margin-bottom: 20px;"></input>
           <br>
+          <a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="20px" src="img/camera.png" onclick="takePicture()"/> Add Picture</a>
+          <p id="picture-status" style="visibility: hidden">Picture saved</p>
           <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
     </div>
 
@@ -67,10 +66,9 @@
 
 <!--navbar bottom-->
     <div class="icon-bar navbar-bottom">
-      <a href="index.html"><img alt="icon" src="img/flat/placeholder.png"><br> Map</a>
-      <a href="#report" id="report-navbar-btn" onclick="report()"><img alt="icon" src="img/flat/feedback.png"><br> Feedback</a>
-      <a href="hub.html"><img alt="icon" src="img/flat/megaphone.png"><br> News</a>
-      <a href="profile.html"><img alt="icon" src="img/flat/settings.png"><br> Settings</a>
+      <a href="index.html" style="width:30%"><img alt="icon" src="img/flat/placeholder.png"><br> Map</a>
+      <a href="#report" id="report-navbar-btn" onclick="showReportView()" style="width:40%; background-color: #95E1BC"><img alt="icon" src="img/flat/feedback.png"><br> Feedback</a>
+      <a href="hub.html" style="width:30%"><img alt="icon" src="img/flat/megaphone.png"><br> News</a>
     </div>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt6Fj_3whrrl1P6BCTW9ZhA9iHx7tsU8k&callback=initMap">

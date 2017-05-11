@@ -12,7 +12,7 @@ body {
   margin: 5px;
   padding: 0;
   font-family: 'Lato', sans-serif;
-  background-color: #fff;
+  background-color: #C7E3E6;
 }
 
 ul {
@@ -52,21 +52,31 @@ li a:hover {
   display: inline-block;
 }
 
-#problem-location,
-#problem-description {
-  width: 80%;
-  max-width: 500px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.8em;
-  border-style: solid;
-  border-color: lightgrey;
+
+/*LOCATION*/
+#problem-location{
+  border: none;
   text-align: left;
+  height: 40px;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-radius: 25px;
+  width: 100%;
+  vertical-align: center;
+}
+
+#location-container {
+  style="width: 100%;
+  font-size: 0;
+}
+
+#report-from-map {
+  color: white;
 }
 
 #problem-description {
   height: 100px;
   text-align: top;
-  line-height: font-family: 'Roboto', sans-serif;
 }
 
 .hidden {
@@ -78,7 +88,14 @@ li a:hover {
 }
 
 #report {
-  margin: 50px 0px 50px 0px;
+  padding: 30px;
+  padding-top: 70px;
+}
+
+.line {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 15px;
 }
 
 #report-btn {
@@ -205,7 +222,6 @@ li a:hover {
 /*NAVBAR TOP*/
 .navbar-top {
     width: 100%;
-    background-color: #0151BC;
     color: white;
     overflow: auto;
     font-size: 20px;
