@@ -185,16 +185,13 @@ li a:hover {
 
 .icon-bar {
   width: 100%;
-  /* Full-width */
   height: 40px;
   text-align: center;
   background-color: #0151BC;
   color: white;
-  /* Dark-grey background */
   overflow: auto;
   font-size: 1em;
   /*box-shadow: inset 0px 0px 10px 5px rgba(0,0,0,0.2);*/
-  /* Overflow due to float */
 }
 
 .icon-bar a {
@@ -216,7 +213,7 @@ li a:hover {
     position: fixed;
     top:0px;
     left:0px;
-    height: 50px;
+    height: 55px;
     line-height: 50px;
 }
 
@@ -234,11 +231,9 @@ li a:hover {
 .navbar-bottom {
   position: fixed;
   bottom:0px;
-  left:0px;
   height: 60px;
   overflow: hidden;
   font-size: 15px;
-  padding-top: 7px;
 }
 
 .navbar-bottom i {
@@ -246,7 +241,8 @@ li a:hover {
 }
 
 .navbar-bottom a {
-  width: 25%;
+  width: 33%;
+  padding-top:7px;
 }
 
 .navbar-bottom a:hover {
