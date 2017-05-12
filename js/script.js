@@ -8,23 +8,16 @@
   var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
   var iconPath;
   var description;
-  if (selectedType == 'Fault') {
-    iconPath = 'img/fault-icon.png';
-  } else if (selectedType == 'Attention') {
-    iconPath = 'img/attention-icon,png';
-  } else {
-    iconPath = 'img/suggestion-icon.png';
-  }
   var selectedType = 'Fault'
   var icons = {
     attention: {
-      icon: 'img/attention-icon.png'
+      icon: 'img/flat/map-warning.png'
     },
     suggestion: {
-      icon: 'img/suggestion-icon.png'
+      icon: 'img/flat/map-idea.png'
     },
     fault: {
-      icon: 'img/fault-icon.png'
+      icon: 'img/flat/map-blocked.png'
     }
   };
 
@@ -297,15 +290,15 @@
       var description;
       var picPath;
       if (feature.type == 'fault') {
-        iconPath = 'img/fault-icon.png';
+        iconPath = 'img/flat/map-blocked.png';
         description = "Road blocked due to construction site";
         picPath = 'img/blocked.png';
       } else if (feature.type == 'attention') {
-        iconPath = 'img/attention-icon.png';
+        iconPath = 'img/flat/map-warning.png';
         description = "Unclear traffic rules due to detour, be careful";
         picPath = 'img/attention.png';
       } else {
-        iconPath = 'img/suggestion-icon.png';
+        iconPath = 'img/flat/map-idea.png';
         description = "Add safe bike park here";
         picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
       }
