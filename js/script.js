@@ -7,6 +7,7 @@
   var selectedType = 'Fault'
   var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
   var iconPath;
+  var description;
   if (selectedType == 'Fault') {
     iconPath = 'img/fault-icon.png';
   } else if (selectedType == 'Attention') {
@@ -342,7 +343,6 @@
   function updateType(type) {
     selectedType = type;
     console.log(document);
-    document.getElementById("type-field").innerHTML = selectedType;
     console.log(type);
   }
 
@@ -404,7 +404,7 @@
     showNotification();
 
     document.getElementById('report').style.display = 'none';
-    document.getElementById('map').style.display = 'block';
+    document.getElementById('map-container').style.display = 'block';
   }
 
   function showNotification() {

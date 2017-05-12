@@ -15,7 +15,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 </head>
 
-<body style="width:100%; height: 100%;">
+<body>
   <!--top bar-->
   <div class="icon-bar navbar-top">
     <a href="profile.html" style="width:20%;"><img alt="icon" src="img/flat/settings.png">
@@ -35,30 +35,28 @@
       <div class="line" style="width:80%"><input type="txt-field" id="problem-location" placeholder="Current Location" type="text"</input></div>
       <div class="line" style="width:10%"><a id="report-from-map" href="#">Map</a></div>
     </div>
-          <form id=type>
+          <div id=type>
             <label class="type-icon">
-              <input type="radio" name="problem-type" value="Temporary Arrangements" checked onclick="updateType(value)">
+              <input type="radio" name="problem-type" value="Road Condition" checked onclick="updateType(value)">
+              <img src="img/flat/warning.png">Road Condition
             </label>
             <label class="type-icon">
-              <input type="radio" name="problem-type" value="Road Condition" onclick="updateType(value)">
-              <br><img src="img/attention-large.png" style="height:40px;">
+              <input type="radio" name="problem-type" value="Temporary Arrangement" onclick="updateType(value)">
+              <img src="img/flat/barrier.png">Temporary Arrangement
             </label>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Infrastructure Improvement" onclick="updateType(value)">
-              <img src="img/suggestion-large.png" style="height:40px;">
-            </label
+              <img src="img/flat/idea.png">Infrastructure Improvement
+            </label>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Other" onclick="updateType(value)">
-                <img src="img/suggestion-large.png" style="height:40px;">
+                <img src="img/flat/favorites.png">Other
             </label>
-          </form>
-      <p id="type-field">Fault</p>
-      <br>
-          <input class="txt-field" id="problem-description" type="text" placeholder="Description (optional)" style="margin-bottom: 20px;"></input>
-          <br>
-          <a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="20px" src="img/camera.png" onclick="takePicture()"/> Add Picture</a>
-          <p id="picture-status" style="visibility: hidden">Picture saved</p>
-          <a id="report-btn" onclick="addProblem()" align="center" href="#map" class="button">Send Report!</a>
+          </div>
+          <textarea id="report-description" rows="2" name="comment" placeholder="Add description (optional)"></textarea>
+          <div style="display: block;"><a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="20px" src="img/flat/photo-camera.png" onclick="takePicture()"/> Add Picture</a>
+          <p id="picture-status" style="visibility: hidden; margin-left:20px;">IMG231.png</p></div>
+          <div align="center" style="padding-top:20px;"><a id="report-btn" onclick="addProblem()" href="#map" class="button">Send Feedback!</a></div>
     </div>
 
     <div id="snackbar">Thank You! You will be informed when the report is handled.</div>
@@ -67,7 +65,7 @@
 <!--navbar bottom-->
     <div class="icon-bar navbar-bottom">
       <a href="index.html" style="width:30%"><img alt="icon" src="img/flat/placeholder.png"><br> Map</a>
-      <a href="#report" id="report-navbar-btn" onclick="showReportView()" style="width:40%; background-color: #95E1BC"><img alt="icon" src="img/flat/feedback.png"><br> Feedback</a>
+      <a href="#report" id="report-navbar-btn" onclick="showReportView()" style="width:40%;"><img alt="icon" src="img/flat/feedback.png"><br> Feedback</a>
       <a href="hub.html" style="width:30%"><img alt="icon" src="img/flat/megaphone.png"><br> News</a>
     </div>
 
