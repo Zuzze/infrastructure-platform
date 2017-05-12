@@ -357,7 +357,6 @@ li a:hover {
 .timestamp{
   color: lightgrey;
   font-size: 0.9em;
-  float: left;
 }
 
 .news-btn {
@@ -365,21 +364,24 @@ li a:hover {
   color:white;
   border:none;
   border-radius: 10px;
-  padding: 3px 10px 3px 10px;
-  margin: 5px 0px 5px 0px;
+  padding: 5px 10px 5px 10px;
+  margin: 10px 0px 10px 0px;
   font-size: 0.8em;
+}
+
+.news-btn:hover {
+  background-color: #539AD0;
 }
 
 /*NEWS TAB MENU*/
 .tab-menu {
   background-color: #539AD0;
   width:100%;
-  margin-top: 30px;
-  height:30px;
+  height:40px;
   text-align: center;
   color: white;
   overflow: auto;
-  font-size: 1em;
+  font-size: 1.1em;
   z-index: 1;
   position:fixed;
 }
@@ -390,4 +392,16 @@ text-align: center;
 transition: all 0.3s ease; /* Add transition for hover effects */
 color: white;
 text-decoration: none;
+height:100%;
+line-height: 40px;
+}
+
+.tab-menu img {
+margin-right: 5px;
+height:25px;
+}
+
+#news {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }

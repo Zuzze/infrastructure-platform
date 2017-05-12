@@ -20,53 +20,77 @@
 <body>
   <div class="icon-bar navbar-top">
     <a href="profile.html" style="width:20%;"><img alt="icon" src="img/flat/settings.png"></a>
-    <a id="pageTitle" style="width:60%;">News</a>
+    <a id="pageTitle" style="width:60%;">Hub</a>
     <a href="profile.html" style="width:20%;"><img alt="icon" src="img/flat/filter.png"></a>
   </div>
   <div class="tab-menu">
-    <a href="#" style="width:50%"><img alt="icon" src="img/flat/megaphone.png">News</a>
-    <a href="#" style="width:50%"><img alt="icon" src="img/flat/line-chart.png">Ranking</a>
+    <a href="#news" style="width:50%" class="active" onclick="showNews()"><img alt="icon" src="img/flat/megaphone.png">News</a>
+    <a href="#" style="width:50%" onclick="showRanking()"><img alt="icon" src="img/flat/line-chart.png">Ranking</a>
   </div>
+
+<div style="margin-top: 50px;">
+  <div id="news">
   <div class="news-card" align="center">
-    <h1>Espoo begins to fix potholes of Tapiola next week </h1>
-    <div class="timestamp">10.5.2017 11.23</div>
+    <h1>Espoo begins to fix potholes of Tapiola next week </h1><br><br><br>
+    <div class="timestamp" align="left">10.5.2017 11.23</div>
     <div align="left">
-      <p> Winter has left lots of potholes in Länsituulentie. Espoo will start fixing these in the beginning of the next week. Road will be blocked and detour will be redirected via Pohjantie.</p>
-      <a href="">Read more...</a>
+      <p> Winter has left lots of potholes in Länsituulentie. Espoo will start fixing these in the beginning of the next week. Road will be blocked and detour will be redirected via Pohjantie...<a href="#">Read more</a></p>
     </div>
       <div>
-        <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:80%; max-width:500px" alt="cycling-news">
+        <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:100%; max-width:500px" alt="cycling-news">
       </div>
-    <div align="right">
-    <button type="button" class="news-btn"> 21 <i class="fa fa-thumbs-up"></i>  Like</button>
+    <div align="center">
+    <button type="button" class="news-btn" onclick="like(this)"><span class="like-counter">21</span><i class="fa fa-thumbs-up"></i>  Like</button>
     <button type="button" class="news-btn"> 7 <i class="fa fa-comment"></i>  Comment</button>
     <button type="button" class="news-btn"><i class="fa fa-share-alt"></i>  Share</button>
     </div>
   </div>
 
   <div class="news-card" align="center">
-    <h1>Espoo begins to fix potholes of Tapiola next week </h1>
-    <div class="timestamp">10.5.2017 11.23</div>
+    <h1>Espoo begins to fix potholes of Tapiola next week </h1><br><br><br>
+    <div class="timestamp" align="left">10.5.2017 11.23</div>
     <div align="left">
-      <p> Winter has left lots of potholes in Länsituulentie. Espoo will start fixing these in the beginning of the next week. Road will be blocked and detour will be redirected via Pohjantie.</p>
-      <a href="">Read more...</a>
+      <p> Winter has left lots of potholes in Länsituulentie. Espoo will start fixing these in the beginning of the next week. Road will be blocked and detour will be redirected via Pohjantie...<a href="#">Read more</a></p>
     </div>
       <div>
-        <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:80%; max-width:500px" alt="cycling-news">
+        <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:100%; max-width:500px" alt="cycling-news">
       </div>
-    <div align="right">
-    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-    <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-    <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-share-alt"></i>  Share</button>
+    <div align="center">
+    <button type="button" class="news-btn" onclick="like(this)"><span class="like-counter">21 </span><i class="fa fa-thumbs-up"></i>  Like</button>
+    <button type="button" class="news-btn"> 7 <i class="fa fa-comment"></i>  Comment</button>
+    <button type="button" class="news-btn"><i class="fa fa-share-alt"></i>  Share</button>
     </div>
   </div>
+
+  <div class="news-card" align="center">
+    <h1>Espoo begins to fix potholes of Tapiola next week </h1><br><br><br>
+    <div class="timestamp" align="left">10.5.2017 11.23</div>
+    <div align="left">
+      <p> Winter has left lots of potholes in Länsituulentie. Espoo will start fixing these in the beginning of the next week. Road will be blocked and detour will be redirected via Pohjantie...<a href="#">Read more</a></p>
+    </div>
+      <div>
+        <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:100%; max-width:500px" alt="cycling-news">
+      </div>
+    <div align="center">
+    <button type="button" class="news-btn" onclick="like(this)"><span class="like-counter">21</span><i class="fa fa-thumbs-up"></i>  Like</button>
+    <button type="button" class="news-btn"> 7 <i class="fa fa-comment"></i>  Comment</button>
+    <button type="button" class="news-btn"><i class="fa fa-share-alt"></i>  Share</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="ranking" style="display:none;">
+  <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:80%; max-width:500px" alt="cycling-news">
+</div>
+</div>
 
 
 
   <div class="icon-bar navbar-bottom">
     <a href="index.html" style="width:30%"><img alt="icon" src="img/flat/placeholder.png"><br> Map</a>
-    <a href="#" id="report-navbar-btn" onclick="showReportView()" style="width:40%;"><img alt="icon" src="img/flat/feedback.png"><br> Feedback</a>
-    <a href="hub.html" style="width:30%"><img alt="icon" src="img/flat/megaphone.png"><br> News</a>
+    <a href="index.html" id="report-navbar-btn" onclick= "document.getelementbyid('report').style.display ='none'; style="width:40%;"><img alt="icon" src="img/flat/feedback.png"><br> Feedback</a>
+    <a href="hub.html" style="width:30%"><img alt="icon" src="img/flat/megaphone.png"><br> Hub</a>
   </div>
   <script>
   </script>

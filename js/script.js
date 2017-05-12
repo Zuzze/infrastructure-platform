@@ -464,4 +464,35 @@
     document.getElementById("snackbar").style.display = 'none';
     document.getElementById("pageTitle").innerHTML = "Send Feedback";
   }
+
+  function showNews(){
+    document.getElementById("news").style.display = 'block';
+    document.getElementById("ranking").style.display = 'none';
+  }
+
+  function showRanking(){
+    document.getElementById("news").style.display = 'none';
+    document.getElementById("ranking").style.display = 'block';
+  }
+
+  function like(button) {
+    //liked
+    if(button.style.background == "rgb(45, 188, 139)"){
+      button.style.background = "#0151BC";
+      document.getElementsByClassName("like-counter").innerHTML = "20";
+    } else {
+      //not liked yet
+      button.style.background = "#2DBC8B";
+      document.getElementsByClassName("like-counter").innerHTML = "22";
+    }
+  }
+
+  function openReportView(){
+      window.location.href = "index.html";
+    document.getElementById("report").style.display = 'block';
+    document.getElementById("map-container").style.display = 'none';
+    document.getElementById("snackbar").style.display = 'none';
+    document.getElementById("pageTitle").innerHTML = "Send Feedback";
+    window.location.href = "#report";
+  }
   //================== GENERAL FUNCTIONS ==========================
