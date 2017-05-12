@@ -223,6 +223,10 @@ li a:hover {
   text-decoration: none;
 }
 
+.icon-bar img {
+  height: 27px;
+}
+
 /*NAVBAR TOP*/
 .navbar-top {
     width: 100%;
@@ -269,6 +273,7 @@ li a:hover {
 .navbar-bottom a:hover {
   background-color: #539AD0;
 }
+
 
 .active {
   background-color: #A2D7FB;
@@ -347,11 +352,13 @@ li a:hover {
   background-color: white;
   color:grey;
   border-radius: 20px;
+  height: 100%;
 }
 
 .news-card h1 {
   font-size: 1.3em;
   float:left;
+  width: 100%;
 }
 
 .timestamp{
@@ -401,7 +408,40 @@ margin-right: 5px;
 height:25px;
 }
 
-#news {
-  padding-top: 50px;
+.card-view {
+  padding-top: 40px;
   padding-bottom: 50px;
+}
+
+
+/*RANKING LISTS*/
+.ranking-list-item {
+  height: 100%;
+  width:100%;
+  font-size: 0;
+  vertical-align: middle;
+  position: relative;
+}
+
+.ranking-list-item img {
+  height: 20px;
+  display: block
+}
+
+.ranking-list-item span {
+  left: 5px;
+}
+
+.ranking-list-item h2 {
+  font-size: 1.1em;
+}
+
+.ranking-card hr {
+  margin: 5px;
+}
+.ranked-likes {
+  float:right;
+}
+.ranked-type, .ranked-location{
+  width: 100%;
 }

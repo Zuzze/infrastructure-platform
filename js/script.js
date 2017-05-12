@@ -399,6 +399,7 @@
 
     document.getElementById('report').style.display = 'none';
     document.getElementById('map-container').style.display = 'block';
+    document.getElementById('filter').style.display = 'block';
   }
 
   function showNotification() {
@@ -463,11 +464,13 @@
     document.getElementById("map-container").style.display = 'none';
     document.getElementById("snackbar").style.display = 'none';
     document.getElementById("pageTitle").innerHTML = "Send Feedback";
+    document.getElementById("filter").style.display = "none";
   }
 
   function showNews(){
     document.getElementById("news").style.display = 'block';
     document.getElementById("ranking").style.display = 'none';
+    document.getElementById("filter").style.display = "block";
   }
 
   function showRanking(){
@@ -476,14 +479,20 @@
   }
 
   function like(button) {
+    var currentLikes = parseInt(button.getElementsByTagName('span')[0].innerHTML);
+    console.log("current likes: " + currentLikes);
+    var newLikes;
     //liked
     if(button.style.background == "rgb(45, 188, 139)"){
       button.style.background = "#0151BC";
-      document.getElementsByClassName("like-counter").innerHTML = "20";
+      newLikes = currentLikes - 1;
+      button.innerHTML = "<span class='like-counter'>"+ newLikes + "  </span><i class='fa fa-thumbs-up'></i>  Upvote";
     } else {
       //not liked yet
       button.style.background = "#2DBC8B";
+      newLikes = currentLikes + 1;
       document.getElementsByClassName("like-counter").innerHTML = "22";
+      button.innerHTML = "<span class='like-counter'>"+ newLikes + "  </span><i class='fa fa-thumbs-up'></i>  Upvoted";
     }
   }
 
