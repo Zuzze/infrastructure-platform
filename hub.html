@@ -13,101 +13,23 @@
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quantico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  </head>
   <body class="w3-content" style="max-width:1300px">
-
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-
-      #map {
-        height: 500px;
-        margin-top: 10px;
-      }
-      /* Optional: Makes the sample page fill the window. */
-
-      html,
-      body {
-        height: 100%;
-        margin: 5px;
-        padding: 0;
-        font-family: 'Quantico', sans-serif;
-        background-color: #fff;
-        overflow: auto;
-      }
-
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-
-      li {
-        float: left;
-      }
-
-      li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-      /* Change the link color to #111 (black) on hover */
-
-      li a:hover {
-        background-color: #111;
-      }
-
-      .txt-field {
-        width: 100%;
-        height: 30px;
-        font-size: 1.2em;
-        display: block;
-        margin: 5px;
-      }
-      /*navbar*/
-
-      .icon-bar {
-          width: 100%; /* Full-width */
-          height: 40px;
-          line-height: 40px;
-          text-align: center;
-          background-color: #555; /* Dark-grey background */
-          overflow: auto; /* Overflow due to float */
-      }
-
-      .icon-bar a {
-          float: left; /* Float links side by side */
-          text-align: center; /* Center-align text */
-          width: 33%; /* Equal width (5 icons with 20% width each = 100%)
-          transition: all 0.3s ease; /* Add transition for hover effects */
-          color: white; /* White text color */
-          font-size: 20px; /* Increased font size */
-          text-decoration: none;
-      }
-
-      .icon-bar a:hover {
-        background-color: #000;
-        /* Add a hover color */
-      }
-
-      .active {
-        background-color: #77c8ce;
-      }
-      /*div.w3-container_base {
-
-    height: 400px;
-    overflow: scroll;
-}*/
-    </style>
 
 </head>
 
 <body>
-  <div class="icon-bar" style="background-color:#77c8ce; position:fixed; z-index: 1; top:0px;">
-    <span style="font-size:15px; height:50px; margin:0px; font-size:1.5em;">NEWS</span><img src="img/user.png" onclick="location.href='profile.html';" style="height:40px; padding:10px; padding-right:30px;" align="right">
+  <div class="icon-bar navbar-top">
+    <a href="profile.html" style="width:20%;"><img alt="icon" src="img/flat/settings.png">
+    <a id="pageTitle" style="width:60%;">Map</a>
+    <a href="profile.html" style="width:20%;"><img alt="icon" src="img/flat/filter.png"></i></a>
   </div>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -162,10 +84,10 @@
   <br>
 
   </div>
-  <div class="icon-bar" style="position: fixed; z-index: 1; bottom:0px;">
-    <a href="index.html"><i class="fa fa-map-marker"></i> Map</a>
-    <a href="report.html" style="background-color:#98d897"><i class="fa fa-plus"></i> Report</a>
-    <a href="hub.html"><i class="fa fa-comment-o"></i> News</a>
+  <div class="icon-bar navbar-bottom">
+    <a href="index.html" style="width:30%"><img alt="icon" src="img/flat/placeholder.png"><br> Map</a>
+    <a href="#report" id="report-navbar-btn" onclick="showReportView()" style="width:40%;"><img alt="icon" src="img/flat/feedback.png"><br> Feedback</a>
+    <a href="hub.html" style="width:30%"><img alt="icon" src="img/flat/megaphone.png"><br> News</a>
   </div>
   <script>
   </script>

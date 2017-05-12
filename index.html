@@ -35,10 +35,12 @@
       <div class="line" style="width:65%"><input type="txt-field" id="problem-location" placeholder="Current Location" type="text"</input></div>
       <div class="line" style="width:15%; float:right;"><a id="report-from-map" href="#" style="vertical-align:middle; color:grey;">Map &#x21FE;</a></div>
     </div>
-    <div style="background-color: #0151BC; margin-top:15px; margin-bottom:10px; border-radius: 10px; height: 40px;">
-      <div class="line"><button id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="30px" src="img/flat/photo-camera.png" onclick="takePicture()"/><span style="font-size: 0.9em;"> Add Picture</span></button></div>
+    <div id="pic-button" style="background-color: #0151BC; margin-top:15px; margin-bottom:10px; border-radius: 10px; height: 40px;">
+      <span onclick="takePicture()">
+      <div class="line"><div id="pic-btn" align="center" href="#map" class="button"><img alt="camera-icon" style="padding-left:10px; padding-right: 10px; height:30px" src="img/flat/photo-camera.png" onclick="takePicture()"/><span style="font-size: 0.9em;"> Add Picture</span></div></div>
       <div class="line" style="margin-left:5px; margin-top: 10px;"><p id="picture-status" style="visibility: hidden; margin-left:20px;">IMG231.png</p></div>
-      <div class="line"><img id="delete-pic" alt="delete-icon" style="visibility: hidden; height:35px; margin-top:3px; padding:5px;" src="img/flat/delete.png" onclick="removePicture()"/></div>
+      </span>
+      <div class="line" style="float:right;"><img id="delete-pic" alt="delete-icon" style="visibility: hidden; height:35px; margin-top:3px; margin-right:5px; padding:5px;" src="img/flat/delete.png" onclick="removePicture()"/></div>
     </div>
           <div id=type>
             <p style="color:grey;">Select Category</p>
@@ -49,14 +51,17 @@
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Temporary Arrangement" onclick="updateType(value)">
               <img src="img/flat/barrier.png">Temporary Arrangement<img class="type-info" data-toggle="tooltip" title="Construction sites, detours etc." src="img/flat/info.png">
+              <span class="tooltiptext">Construction sites and detours, cannot pass</span>
             </label>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Infrastructure Improvement" onclick="updateType(value)">
               <img src="img/flat/idea.png">Infrastructure Improvement<img class="type-info" src="img/flat/info.png">
+              <span class="tooltiptext">Suggestions related to cycling paths, signs...</span>
             </label>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Other" onclick="updateType(value)">
                 <img src="img/flat/favorites.png">Other<img class="type-info" src="img/flat/info.png">
+                <span class="tooltiptext">Thank you, ask, comment whatever. These reports are not shown on the map</span>
             </label>
           </div>
           <textarea id="report-description" rows="2" name="comment" placeholder="Add description (optional)"></textarea>

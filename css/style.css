@@ -124,6 +124,7 @@ li a:hover {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  padding-top: 5px;
 }
 
 #picture-status {
@@ -316,28 +317,26 @@ li a:hover {
   height:100%;
 }
 
-/*
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
+/*TOOLTIP INFO FOR REPORT TYPES*/
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
+.tooltiptext {
+    display: none;
+    width: 90%;
+    background-color: white;
+    color: grey;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-
-    /* Position the tooltip
-    position: absolute;
-    z-index: 1;
+    top: -5px;
+    right: 105%;
+    z-index: 999;
+    font-size: 14px;
+    padding: 5px;
+    border-color: grey;
+    border-style: solid;
+    border-weight: 2px;
 }
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+.type-icon:hover .tooltiptext {
+    display: block;
 }
-*/
