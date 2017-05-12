@@ -57,9 +57,8 @@ li a:hover {
 #problem-location{
   border: none;
   text-align: left;
-  height: 40px;
-  margin-left: 20px;
-  padding-left: 20px;
+  height: 30px;
+  padding-left: 10px;
   border-radius: 25px;
   width: 100%;
   vertical-align: center;
@@ -110,7 +109,7 @@ li a:hover {
   color: black;
   text-decoration: none;
   padding: 15px 50px 15px 50px;
-  background-color: #95E1BC;
+  background-color: #2DBC8B;
   border: none;
   font-weight: bold;
   border-radius: 30px;
@@ -128,8 +127,7 @@ li a:hover {
 }
 
 #picture-status {
-  color: grey;
-  margin-left: 10px;
+  color: white;
 }
 
 #estimated-time {
@@ -278,21 +276,22 @@ li a:hover {
 
 .type-icon {
   width: 100%;
-  background-color: #539AD0;
+  background-color: #0151BC;
   color: white;
   padding: 5px;
-  height: 50px;
+  height: 40px;
   font-size: 1.1em;
+  border-radius: 10px;
 }
 
 .type-icon:hover {
-  background-color: #A2D7FB;
+  background-color: #539AD0;
 }
 
 .type-icon img {
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 100%;
 }
 
 .type-icon>input {
@@ -306,8 +305,39 @@ li a:hover {
 
 .type-icon>input:checked+img{
   /* (RADIO CHECKED) IMAGE STYLES */
-  background-color: #A2D7FB;
+  background-color: #539AD0;
   height: 100%;
-  border-radius: 45px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 3px;
 }
+
+.type-info {
+  float:right;
+  height:100%;
+}
+
+/*
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+*/

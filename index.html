@@ -31,31 +31,35 @@
 <!--report-->
   <div id="report" style="display:none;">
     <div id="location-container">
-      <div class="line" style="width:10%"><img alt="location" src="img/flat/cursor.png" style="padding-top:10px; padding-right:10px;"></div>
-      <div class="line" style="width:80%"><input type="txt-field" id="problem-location" placeholder="Current Location" type="text"</input></div>
-      <div class="line" style="width:10%"><a id="report-from-map" href="#">Map</a></div>
+      <div class="line" style="width:15%"><img alt="location" src="img/flat/cursor.png" style="height:30px; width:30px; padding: 2px"></div>
+      <div class="line" style="width:65%"><input type="txt-field" id="problem-location" placeholder="Current Location" type="text"</input></div>
+      <div class="line" style="width:15%; float:right;"><a id="report-from-map" href="#" style="vertical-align:middle; color:grey;">Map &#x21FE;</a></div>
+    </div>
+    <div style="background-color: #0151BC; margin-top:15px; margin-bottom:10px; border-radius: 10px; height: 40px;">
+      <div class="line"><button id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="30px" src="img/flat/photo-camera.png" onclick="takePicture()"/><span style="font-size: 0.9em;"> Add Picture</span></button></div>
+      <div class="line" style="margin-left:5px; margin-top: 10px;"><p id="picture-status" style="visibility: hidden; margin-left:20px;">IMG231.png</p></div>
+      <div class="line"><img id="delete-pic" alt="delete-icon" style="visibility: hidden; height:35px; margin-top:3px; padding:5px;" src="img/flat/delete.png" onclick="removePicture()"/></div>
     </div>
           <div id=type>
+            <p style="color:grey;">Select Category</p>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Road Condition" checked onclick="updateType(value)">
-              <img src="img/flat/warning.png">Road Condition
+              <img src="img/flat/warning.png">Road Condition<img class="type-info" src="img/flat/info.png">
             </label>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Temporary Arrangement" onclick="updateType(value)">
-              <img src="img/flat/barrier.png">Temporary Arrangement
+              <img src="img/flat/barrier.png">Temporary Arrangement<img class="type-info" data-toggle="tooltip" title="Construction sites, detours etc." src="img/flat/info.png">
             </label>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Infrastructure Improvement" onclick="updateType(value)">
-              <img src="img/flat/idea.png">Infrastructure Improvement
+              <img src="img/flat/idea.png">Infrastructure Improvement<img class="type-info" src="img/flat/info.png">
             </label>
             <label class="type-icon">
               <input type="radio" name="problem-type" value="Other" onclick="updateType(value)">
-                <img src="img/flat/favorites.png">Other
+                <img src="img/flat/favorites.png">Other<img class="type-info" src="img/flat/info.png">
             </label>
           </div>
           <textarea id="report-description" rows="2" name="comment" placeholder="Add description (optional)"></textarea>
-          <div style="display: block;"><a id="pic-btn" align="center" href="#map" class="button" onclick="takePicture()"><img alt="camera-icon" width="20px" src="img/flat/photo-camera.png" onclick="takePicture()"/> Add Picture</a>
-          <p id="picture-status" style="visibility: hidden; margin-left:20px;">IMG231.png</p></div>
           <div align="center" style="padding-top:20px;"><a id="report-btn" onclick="addProblem()" href="#map" class="button">Send Feedback!</a></div>
     </div>
 

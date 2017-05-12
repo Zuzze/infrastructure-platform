@@ -346,15 +346,15 @@
     var description;
     var picPath;
     if (selectedType == 'Fault') {
-      iconPath = 'img/fault-icon.png';
+      iconPath = 'img/flat/map-blocked.png';
       description = "Road blocked due to construction site";
       picPath = 'img/blocked.png';
     } else if (selectedType == 'Attention') {
-      iconPath = 'img/attention-icon.png';
+      iconPath = 'img/flat/map-warning.png';
       description = "Unclear traffic rules due to detour, be careful";
       picPath = 'img/attention.png';
     } else if (selectedType == 'Suggestion') {
-      iconPath = 'img/suggestion-icon.png';
+      iconPath = 'img/flat/map-idea.png';
       description = "Add safe bike park here";
       picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
     } else {
@@ -447,7 +447,14 @@
 
   function takePicture() {
     document.getElementById("picture-status").style.visibility = 'visible';
+    document.getElementById("delete-pic").style.visibility = 'visible';
     console.log("picture taken");
+  }
+
+  function removePicture() {
+    document.getElementById("picture-status").style.visibility = 'hidden';
+    document.getElementById("delete-pic").style.visibility = 'hidden';
+    console.log("picture removed");
   }
 
   function showReportView() {
@@ -456,5 +463,4 @@
     document.getElementById("snackbar").style.display = 'none';
     document.getElementById("pageTitle").innerHTML = "Send Feedback";
   }
-
   //================== GENERAL FUNCTIONS ==========================
