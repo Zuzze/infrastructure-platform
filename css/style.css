@@ -233,7 +233,7 @@ li a:hover {
     position: fixed;
     top:0px;
     left:0px;
-    height: 55px;
+    height: 50px;
     line-height: 50px;
 }
 
@@ -254,6 +254,7 @@ li a:hover {
   height: 60px;
   overflow: hidden;
   font-size: 15px;
+  width:100%;
 }
 
 .navbar-bottom i {
@@ -337,6 +338,56 @@ li a:hover {
     border-weight: 2px;
 }
 
-.type-icon:hover .tooltiptext {
-    display: block;
+
+/* CARDS */
+.news-card {
+  width:90%;
+  padding:10px;
+  margin:20px;
+  background-color: white;
+  color:grey;
+  border-radius: 20px;
+}
+
+.news-card h1 {
+  font-size: 1.3em;
+  float:left;
+}
+
+.timestamp{
+  color: lightgrey;
+  font-size: 0.9em;
+  float: left;
+}
+
+.news-btn {
+  background-color: #0151BC;
+  color:white;
+  border:none;
+  border-radius: 10px;
+  padding: 3px 10px 3px 10px;
+  margin: 5px 0px 5px 0px;
+  font-size: 0.8em;
+}
+
+/*NEWS TAB MENU*/
+.tab-menu {
+  background-color: #539AD0;
+  width:100%;
+  margin-top: 30px;
+  height:30px;
+  text-align: center;
+  color: white;
+  overflow: auto;
+  font-size: 1em;
+  z-index: 1;
+  position:fixed;
+}
+
+.tab-menu a {
+float: left;
+text-align: center;
+transition: all 0.3s ease; /* Add transition for hover effects */
+color: white;
+text-decoration: none;
 }
