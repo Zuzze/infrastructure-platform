@@ -504,15 +504,13 @@
     document.getElementById("pageTitle").innerHTML = "Send Feedback";
     window.location.href = "#report";
   }
+
+  /*SIDE NAVIGATION*/
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
   //================== GENERAL FUNCTIONS ==========================
-function showFilters(button) {
-document.getElementById("filters").style.visibility = "block";
-}
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
