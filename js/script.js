@@ -465,6 +465,7 @@
     document.getElementById("snackbar").style.display = 'none';
     document.getElementById("pageTitle").innerHTML = "Send Feedback";
     document.getElementById("filter").style.display = "none";
+    document.getElementById("mySidenav").style.display = "none";
   }
 
   function showNews(){
@@ -507,6 +508,7 @@
 
   /*SIDE NAVIGATION*/
   function openNav() {
+    document.getElementById("mySidenav").style.display = "block";
       document.getElementById("mySidenav").style.width = "250px";
   }
 
