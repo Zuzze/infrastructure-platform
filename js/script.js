@@ -31,6 +31,10 @@
       }, //Runeberginkatu 14-16
 
       zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true,
+      zoomControl: true,
+      streetViewControl: true,
       styles: [
   {
     "elementType": "geometry",
