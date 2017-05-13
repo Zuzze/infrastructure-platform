@@ -497,7 +497,7 @@
   }
 
   function openReportView(){
-      window.location.href = "index.html";
+    window.location.href = "index.html";
     document.getElementById("report").style.display = 'block';
     document.getElementById("map-container").style.display = 'none';
     document.getElementById("snackbar").style.display = 'none';
@@ -505,3 +505,14 @@
     window.location.href = "#report";
   }
   //================== GENERAL FUNCTIONS ==========================
+function showFilters(button) {
+document.getElementById("filters").style.visibility = "block";
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
