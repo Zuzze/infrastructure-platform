@@ -6,7 +6,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Quantico">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="js/script.js"></script>
@@ -24,62 +24,35 @@
   </div>
 
   <div class="tab-menu">
-    <a href="#" style="width:50%" class="active" onclick=""><img alt="icon" src="img/flat/notification.png">Notifications</a>
-    <a href="#" style="width:50%" onclick=""><img alt="icon" src="img/flat/profile.png">My Profile</a>
+    <a href="notifications.html" style="width:50%" onclick=""><img alt="icon" src="img/flat/notification.png">Notifications</a>
+    <a href="#" style="width:50%" class="active" onclick=""><img alt="icon" src="img/flat/profile.png">My Profile</a>
   </div>
 
-  <!-- <div class="w3-card-2 w3-round w3-white"> -->
 <div style="margin-top: 50px;">
-  <div id="profile">
+  <div id="profile" style="padding-top:30px; padding-bottom:50px;">
   <div class="news-card" align="center">
-    <h1>Espoo begins to fix potholes of Tapiola next week </h1><br><br><br>
-    <div class="timestamp" align="left">10.5.2017 11.23</div>
+    <h1 class="espoo-blue-font" style="font-size:1.5em;">Matti28 </h1><br><br><br>
+    <img alt="profile-pic" src="img/cyclist-profile.jpg" style="width:100%; max-width:500px; padding-bottom:10px;">
     <div align="left">
-      <p> Winter has left lots of potholes in Länsituulentie. Espoo will start fixing these in the beginning of the next week. Road will be blocked and detour will be redirected via Pohjantie...<a href="#">Read more</a></p>
+      <h4 class="espoo-blue-font"><i class="fa fa-map-marker"></i> Espoo Keilaniemi, FI</h4>
+      <h5><i class="fa fa-book"></i> Biography</h5>
+      <p>"Enthusiastic Cyclist who enjoys long trips by the sea."</p>
+      <button type="button" class="news-btn"><i class="fa fa-pencil"></i>Edit</button>
+      <h1 class="espoo-blue-font">Feedback Statistics</h1><br>
+      <div style="color:grey">
+      <a href="#"><i class="fa fa-send-o"></i> Sent: 12</a><br>
+      <a href="#"><i class="fa fa-check-square-o"></i> Handled: 5</a><br>
+      <a href="#"><i class="fa fa-hourglass-half"></i> Waiting: 7</a><br>
+      <h5><i class="fa fa-thumbs-up"></i> Used Upvote 342 times</h5>
+      <h5><i class="fa fa-thumbs-down"></i> Used Downvote 5 times</h5>
     </div>
-      <div>
-        <img src="http://adigaskell.org/wp-content/uploads/2015/06/potholes.jpg" style="width:100%; max-width:500px" alt="cycling-news">
-      </div>
-    <div align="center">
-    <button type="button" class="news-btn" onclick="like(this)"><span class="like-counter">21</span><i class="fa fa-thumbs-up"></i>  Like</button>
-    <button type="button" class="news-btn"> 7 <i class="fa fa-comment"></i>  Comment</button>
-    <button type="button" class="news-btn"><i class="fa fa-share-alt"></i>  Share</button>
+      <h1 class="espoo-blue-font">Changemaker Ranking</h1>
+      <p><i class="fa fa-trophy"></i> 24/2681</p>
     </div>
   </div>
 </div>
+</div>
 
-
-    <div class="w3-center w3-card-2 w3-round">
-      <h3 style="font-family:'Quantico'">Kalle</h3>
-      <img src="https://www.w3schools.com/w3images/avatar3.png" class="w3-margin w3-circle" alt="Person" style="width:40%">
-      <div class="w3-left-align w3-padding">
-        <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme w3-large"></i> Helsinki, FI</p>
-        <p><i class="fa fa-bicycle fa-fw w3-margin-right w3-text-theme w3-large"></i> Avg: 125 km/week</p>
-      </div>
-    </div>
-    <button type="button"><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme w3-large"></i>Settings</button>
-    <div class="w3-center w3-card-2 w3-round">
-      <h3 style="font-family:'Quantico'">History</h3>
-      <div class="w3-left-align w3-padding">
-        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme w3-large"></i> Total: 12 Reported issues</p>
-        <p><i class="fa fa-check-square fa-fw w3-margin-right w3-text-theme w3-large"></i> Handled: 5 issues</p>
-        <p><i class="fa fa-hourglass-half fa-fw w3-margin-right w3-text-theme w3-large"></i> Waiting: 7 issues</p>
-        <p><i class="fa fa-thumbs-o-up fa-fw w3-margin-right w3-text-theme w3-large"></i> Upvotes: 21 issues</p>
-        <p><i class="fa fa-thumbs-o-down fa-fw w3-margin-right w3-text-theme w3-large"></i> Downvotes: 1 issues</p>
-        <p><i class="fa fa-comment fa-fw w3-margin-right w3-text-theme w3-large"></i> Comments: 24 issues</p>
-      </div>
-    </div>
-    <div class="w3-center w3-card-2 w3-round">
-      <h3 style="font-family:'Quantico'">Notifications</h3>
-      <div class="w3-left-align w3-padding">
-        <p><i class="fa fa-thumbs-o-up fa-fw w3-margin-right w3-text-theme w3-large"></i> Aleksi upvoted your report (5 min ago)</p>
-        <p><i class="fa fa-thumbs-o-up fa-fw w3-margin-right w3-text-theme w3-large"></i> Maija upvoted your report (20 min ago)</p>
-        <p><i class="fa fa-comment fa-fw w3-margin-right w3-text-theme w3-large"></i> City of espoo answered to your report (1 hour ago)</p>
-        <p><i class="fa fa-comment fa-fw w3-margin-right w3-text-theme w3-large"></i> Maija commented on your report (2 hours ago)</p>
-      </div>
-    </div>
-  </div>
-  </div>
   <!--navbar bottom-->
       <div class="icon-bar navbar-bottom">
         <a href="index.html" style="width:30%"><img alt="icon" src="img/flat/placeholder.png"><br> Map</a>
