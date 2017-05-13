@@ -8,7 +8,6 @@
   var iconBase = 'http://maps.google.com/mapfiles/kml/pal3';
   var iconPath;
   var description;
-  var selectedType = 'Fault'
   var icons = {
     attention: {
       icon: 'img/flat/map-warning.png'
@@ -346,34 +345,33 @@
     var iconPath;
     var description;
     var picPath;
-    if (selectedType == 'Fault') {
-      iconPath = 'img/flat/map-blocked.png';
-      description = "Road blocked due to construction site";
-      picPath = 'img/blocked.png';
-    } else if (selectedType == 'Attention') {
-      iconPath = 'img/flat/map-warning.png';
-      description = "Unclear traffic rules due to detour, be careful";
-      picPath = 'img/attention.png';
-    } else if (selectedType == 'Suggestion') {
-      iconPath = 'img/flat/map-idea.png';
-      description = "Add safe bike park here";
-      picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
-    } else {
-      iconPath = 'img/suggestion-icon.png';
-      description = "Thank you for fixing the pothole!";
-      picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
-    }
-    console.log("icon path " + iconPath);
-    console.log("report type: " + selectedType);
-    var marker = new google.maps.Marker({
-      position: pos,
-      icon: iconPath,
-      map: map,
-      title: selectedType
-    });
 
-    //add info window to problem
-    var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
+    //"Other" type will not be marked on the map
+    if (selectedType !== 'Other') {
+      if (selectedType == 'Fault') {
+        iconPath = 'img/flat/map-blocked.png';
+        description = "Road blocked due to construction site";
+        picPath = 'img/blocked.png';
+      } else if (selectedType == 'Attention') {
+        iconPath = 'img/flat/map-warning.png';
+        description = "Unclear traffic rules due to detour, be careful";
+        picPath = 'img/attention.png';
+      } else if (selectedType == 'Suggestion') {
+        iconPath = 'img/flat/map-idea.png';
+        description = "Add safe bike park here";
+        picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
+      }
+      console.log("icon path " + iconPath);
+      console.log("report type: " + selectedType);
+      var marker = new google.maps.Marker({
+        position: pos,
+        icon: iconPath,
+        map: map,
+        title: selectedType
+      });
+
+      //add info window to problem
+      var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
       '<h2>' + selectedType + '</h2>' +
       '<div id="siteNotice">' +
       '<img src=' + picPath + ' alt="picture" style="max-width: 130px;">' +
@@ -387,16 +385,17 @@
       '</div>' +
       '</div>';
 
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
-    console.log(marker);
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+      console.log(marker);
+    }
+    //For all markers, also for "other type"
     console.log("problem added");
     showNotification();
-
     document.getElementById('report').style.display = 'none';
     document.getElementById('map-container').style.display = 'block';
     document.getElementById('filter').style.display = 'block';
