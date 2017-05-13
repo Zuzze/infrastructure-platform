@@ -5,6 +5,10 @@
 }
 /* Optional: Makes the sample page fill the window. */
 
+html {
+    overflow-y: scroll;
+}
+
 html,
 body {
   height: 100%;
@@ -221,6 +225,7 @@ li a:hover {
   transition: all 0.3s ease; /* Add transition for hover effects */
   color: white;
   text-decoration: none;
+  height:100%;
 }
 
 .icon-bar img {
@@ -272,6 +277,7 @@ li a:hover {
 
 .navbar-bottom a:hover {
   background-color: #539AD0;
+  height:100%;
 }
 
 
@@ -379,7 +385,6 @@ li a:hover {
   padding: 5px;
   margin: 10px 0px 10px 0px;
   font-size: 1em;
-  width:30%
 }
 
 .news-btn:hover {
@@ -486,9 +491,8 @@ height:25px;
 }
 
 #sidenav-logo img{
-  height:110px;
+  height:100%;
   padding:5px;
-  padding-top:15px;
 }
 
 
@@ -508,4 +512,27 @@ height:25px;
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+
+/*LANDING PAGE*/
+.img-wrapper {
+  overflow: hidden;
+ }
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding-bottom:90px;
+}
+
+.img-overlay:before {
+  content: ' ';
+  display: block;
+  /* adjust 'height' to position overlay content vertically */
+  height: 20%;
 }
