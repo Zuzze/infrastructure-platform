@@ -388,7 +388,7 @@ li a:hover {
   border-radius: 10px;
   padding: 5px;
   margin: 10px 0px 10px 0px;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 .news-btn:hover {
@@ -545,4 +545,19 @@ height:25px;
   display: block;
   /* adjust 'height' to position overlay content vertically */
   height: 5%;
+}
+
+/*INFO WINDOW*/
+.info-window-btn {
+  background-color: #0151BC;
+  color:white;
+  border:none;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px 0px 10px 0px;
+  font-size: 1.2em;
+}
+
+.info-window-btn:hover {
+  background-color: #539AD0;
 }
