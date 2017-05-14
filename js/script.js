@@ -293,32 +293,36 @@
       var iconPath;
       var description;
       var picPath;
+      var title;
       if (feature.type == 'fault') {
         iconPath = 'img/flat/map-blocked.png';
         description = "Road blocked due to construction site";
         picPath = 'img/blocked.png';
+        title = "Temporary Arrangement"
       } else if (feature.type == 'attention') {
         iconPath = 'img/flat/map-warning.png';
-        description = "Unclear traffic rules due to detour, be careful";
-        picPath = 'img/attention.png';
+        description = "Big pothole on the road";
+        picPath = 'img/pothole.jpg';
+        title = "Road Condition"
       } else {
         iconPath = 'img/flat/map-idea.png';
-        description = "Add safe bike park here";
+        description = "Safe bike park needed";
         picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
+        title = "Suggestion"
       }
 
+
       var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
-        '<h2>' + feature.type + '</h2>' +
+        '<p>' + title + '</p>' +
+        '<p><b>' + description + '</b></p>' +
         '<div id="siteNotice">' +
-        '<img src=' + picPath + ' alt="picture" style="max-width: 130px;">' +
+        '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:150px;border-radius:20px; margin-bottom:10px;">' +
         '</div>' +
-        '<div id="bodyContent">' +
-        '<p>' + description + '</p>' +
-        '<br><small>Reported 1 hour ago</small><br>' +
-        '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
+        '<div class="timestamp">Reported 1 hour ago<div>' +
+        '<button type="button" class="news-btn" style="margin:5px;" onclick="like(this)"><span class="like-counter">121</span><i class="fa fa-thumbs-up"></i>  Upvote</button>'+
+        '<button type="button" class="news-btn" style="margin:5px;" onclick="dislike(this)"><span class="like-counter">1</span><i class="fa fa-thumbs-down"></i>  Downvote</button>'+
         '<br><a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
-        //'See more...</a>' +
-        '</div>' +
+        '<a href="#" style="float:right;">See more...</a>' +
         '</div>';
       var infowindow = new google.maps.InfoWindow({
         content: contentString
@@ -349,6 +353,7 @@
     var iconPath;
     var description;
     var picPath;
+    var title;
 
     //"Other" type will not be marked on the map
     if (selectedType !== 'Other') {
@@ -356,14 +361,17 @@
         iconPath = 'img/flat/map-blocked.png';
         description = "Road blocked due to construction site";
         picPath = 'img/blocked.png';
+        title="Temporary Arrangement"
       } else if (selectedType == 'Attention') {
         iconPath = 'img/flat/map-warning.png';
         description = "Unclear traffic rules due to detour, be careful";
         picPath = 'img/attention.png';
+        title = "Road Condition"
       } else if (selectedType == 'Suggestion') {
         iconPath = 'img/flat/map-idea.png';
         description = "Add safe bike park here";
         picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
+        title = "Suggestion"
       }
       console.log("icon path " + iconPath);
       console.log("report type: " + selectedType);
@@ -375,19 +383,19 @@
       });
 
       //add info window to problem
+
       var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
-      '<h2>' + selectedType + '</h2>' +
-      '<div id="siteNotice">' +
-      '<img src=' + picPath + ' alt="picture" style="max-width: 130px;">' +
-      '</div>' +
-      '<div id="bodyContent">' +
-      '<p>' + description + '</p>' +
-      '<br><small>Reported 1 minute ago</small><br>' +
-      '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-      '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">' +
-      'See more...</a>' +
-      '</div>' +
-      '</div>';
+        '<p>' + title + '</p>' +
+        '<p><b>' + description + '</b></p>' +
+        '<div id="siteNotice">' +
+        '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:150px;border-radius:20px; margin-bottom:10px;">' +
+        '</div>' +
+        '<div class="timestamp">Reported 1 min ago<div>' +
+        '<button type="button" class="news-btn" style="margin:5px;" onclick="like(this)"><span class="like-counter">1</span><i class="fa fa-thumbs-up"></i>  Upvote</button>'+
+        '<button type="button" class="news-btn" style="margin:5px;" onclick="dislike(this)"><span class="like-counter">0</span><i class="fa fa-thumbs-down"></i>  Downvote</button>'+
+        '<br><a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
+        '<a href="#" style="float:right;">See more...</a>' +
+        '</div>';
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString
@@ -500,6 +508,23 @@
     }
   }
 
+  function dislike(button) {
+    var currentDislikes = parseInt(button.getElementsByTagName('span')[0].innerHTML);
+    console.log("current dislikes: " + currentDislikes);
+    var newDislikes;
+    //disliked
+    if(button.style.background == "rgb(255, 99, 94)"){
+      button.style.background = "#0151BC";
+      newDislikes = currentDislikes - 1;
+      button.innerHTML = "<span class='like-counter'>"+ newDislikes + "  </span><i class='fa fa-thumbs-up'></i>  Downvote";
+    } else {
+      //not disliked yet
+      button.style.background = "#FF635E";//red
+      newDislikes = currentDislikes + 1;
+      button.innerHTML = "<span class='like-counter'>"+ newDislikes + "  </span><i class='fa fa-thumbs-up'></i>  Downvoted";
+    }
+  }
+
   function openReportView(){
     window.location.href = "index.html";
     document.getElementById("report").style.display = 'block';
@@ -519,3 +544,7 @@
       document.getElementById("mySidenav").style.width = "0";
   }
   //================== GENERAL FUNCTIONS ==========================
+function prepareForKeyboard(){
+document.getElementById("navbar-bottom").style.position = absolute;
+
+}
