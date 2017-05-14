@@ -494,7 +494,7 @@ height:25px;
     transition: 0.3s;
 }
 
-#sidenav-logo{
+.sidenav-logo{
   border-radius: 60px;
   background-color: #0151BC;
   height:120px;
