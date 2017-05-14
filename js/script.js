@@ -279,6 +279,12 @@
       position: new google.maps.LatLng(60.1870101, 24.8193514),
       type: 'suggestion'
     }, {
+      position: new google.maps.LatLng(60.1970101, 24.8193514),
+      type: 'fault'
+    }, {
+      position: new google.maps.LatLng(60.1770101, 24.7193514),
+      type: 'attention'
+    }, {
       position: new google.maps.LatLng(60.1718263, 24.9207661),
       type: 'attention'
     }];
@@ -307,12 +313,12 @@
       } else {
         iconPath = 'img/flat/map-idea.png';
         description = "Safe bike park needed";
-        picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
+        picPath = 'img/suggestion.jpg';
         title = "Suggestion"
       }
 
 
-      var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
+      var contentString = '<div align="center" id="content" style="max-width: 150px;padding-left:20px; font-family:Lato">' +
         '<p>' + title + '</p>' +
         '<p><b>' + description + '</b></p>' +
         '<div id="siteNotice">' +
@@ -365,12 +371,12 @@
         title="Temporary Arrangement"
       } else if (selectedType == 'Attention') {
         iconPath = 'img/flat/map-warning.png';
-        description = "Unclear traffic rules due to detour, be careful";
+        description = "Unclear traffic rules due to detour";
         picPath = 'img/attention.png';
         title = "Road Condition"
       } else if (selectedType == 'Suggestion') {
         iconPath = 'img/flat/map-idea.png';
-        description = "Add safe bike park here";
+        description = "Safe bike park needed";
         picPath = 'http://www.kulkulaari.fi/sites/default/files/picture_416.jpg';
         title = "Suggestion"
       }
@@ -385,8 +391,8 @@
 
       //add info window to problem
 
-      var contentString = '<div align="center" id="content" style="max-width: 150px;">' +
-        '<p>' + title + '</p>' +
+      var contentString = '<div align="center" id="content" style="max-width: 150px; padding-left:20px; font-family:Lato">' +
+        '<small>' + title + '</small>' +
         '<p><b>' + description + '</b></p>' +
         '<div id="siteNotice">' +
         '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:100px;border-radius:20px; margin-bottom:10px;">' +
@@ -423,41 +429,6 @@
     setTimeout(function() {
       x.className = x.className.replace("show", "");
     }, 3000);
-  }
-
-  function showReportInfo(marker, type) {
-    var reportPosition = marker.position;
-    var infoWindow = new google.maps.InfoWindow({
-      map: map
-    });
-    /*google.maps.event.addListener(marker, 'click', function() {
-      console.log(marker.get('id'));
-    });
-    */
-    infoWindow.setPosition(pos);
-    var contentString = '<div align="center" id="content" style="max-width: 300px;">' +
-      '<h2>' + type + '</h2>' +
-      '<div id="siteNotice">' +
-      '<img src="img/blocked.png" alt="picture" style="max-width: 130px;">' +
-      '</div>' +
-      '<div id="bodyContent">' +
-      '<p>Road blocked due to Construction site</p>' +
-      '<br><small>Reported 1 minute ago</small><br>' +
-      '<img src="https://freeiconshop.com/wp-content/uploads/edd/like-flat.png" alt="picture" style="width: 35px;"><br> 7 likes' +
-      '<br><a href="report-description.html" style="font-size: 0.9em;" align="right">' +
-      'See more...</a>' +
-      '</div>' +
-      '</div>';
-    infoWindow.setContent(contentString);
-
-    var infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
-    });
-    console.log(marker);
-    console.log("show info");
   }
 
   function takePicture() {
