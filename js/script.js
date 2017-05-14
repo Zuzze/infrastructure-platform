@@ -316,12 +316,13 @@
         '<p>' + title + '</p>' +
         '<p><b>' + description + '</b></p>' +
         '<div id="siteNotice">' +
-        '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:150px;border-radius:20px; margin-bottom:10px;">' +
+        '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:100px;border-radius:20px; margin-bottom:10px;">' +
         '</div>' +
         '<div class="timestamp">Reported 1 hour ago<div>' +
         '<button type="button" class="news-btn" style="margin:5px;" onclick="like(this)"><span class="like-counter">121</span><i class="fa fa-thumbs-up"></i>  Upvote</button>'+
         '<button type="button" class="news-btn" style="margin:5px;" onclick="dislike(this)"><span class="like-counter">1</span><i class="fa fa-thumbs-down"></i>  Downvote</button>'+
-        '<br><a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
+        '<p><i class="fa fa-comment-o"></i> 0 comments</p>' +
+        '<a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
         '<a href="#" style="float:right;">See more...</a>' +
         '</div>';
       var infowindow = new google.maps.InfoWindow({
@@ -388,12 +389,13 @@
         '<p>' + title + '</p>' +
         '<p><b>' + description + '</b></p>' +
         '<div id="siteNotice">' +
-        '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:150px;border-radius:20px; margin-bottom:10px;">' +
+        '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:100px;border-radius:20px; margin-bottom:10px;">' +
         '</div>' +
         '<div class="timestamp">Reported 1 min ago<div>' +
         '<button type="button" class="news-btn" style="margin:5px;" onclick="like(this)"><span class="like-counter">1</span><i class="fa fa-thumbs-up"></i>  Upvote</button>'+
         '<button type="button" class="news-btn" style="margin:5px;" onclick="dislike(this)"><span class="like-counter">0</span><i class="fa fa-thumbs-down"></i>  Downvote</button>'+
-        '<br><a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
+        '<p><i class="fa fa-comment-o"></i> 0 comments</p>' +
+        '<a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
         '<a href="#" style="float:right;">See more...</a>' +
         '</div>';
 
