@@ -499,7 +499,6 @@
   }
 
   function openReportView(){
-    window.location.href = "index.html";
     document.getElementById("report").style.display = 'block';
     document.getElementById("map-container").style.display = 'none';
     document.getElementById("snackbar").style.display = 'none';
@@ -509,7 +508,6 @@
 
   /*SIDE NAVIGATION*/
   function openNav() {
-    document.getElementById("mySidenav").style.display = "block";
       document.getElementById("mySidenav").style.width = "250px";
   }
 
