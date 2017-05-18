@@ -319,7 +319,7 @@
 
 
       var contentString = '<div align="center" id="content" style="max-width: 150px;padding-left:20px; font-family:Lato">' +
-        '<p>' + title + '</p>' +
+        '<small style="color:grey">' + title + '</small>' +
         '<p><b>' + description + '</b></p>' +
         '<div id="siteNotice">' +
         '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:100px; margin-bottom:10px;">' +
@@ -392,7 +392,7 @@
       //add info window to problem
 
       var contentString = '<div align="center" id="content" style="max-width: 150px; padding-left:20px; font-family:Lato">' +
-        '<small>' + title + '</small>' +
+        '<small style="color:grey">' + title + '</small>' +
         '<p><b>' + description + '</b></p>' +
         '<div id="siteNotice">' +
         '<img src=' + picPath + ' alt="picture" style="width:100%; max-height:100px; margin-bottom:10px;">' +
