@@ -188,6 +188,10 @@ li a:hover {
   font-size: 15px;
 }
 
+.green-bg {
+  background-color: #2DBC8B;
+}
+
 #report-btn {
   font-size: 1.2em;
   width: 100px;
@@ -361,6 +365,10 @@ li a:hover {
   height:100%;
 }
 
+.mid-blue {
+  background-color: #539AD0;
+}
+
 
 .active {
   background-color: #A2D7FB;
@@ -379,7 +387,7 @@ li a:hover {
 }
 
 .type-icon:hover {
-  background-color: #539AD0;
+  /*background-color: #539AD0;*/
 }
 
 .type-icon img {
@@ -399,9 +407,9 @@ li a:hover {
 
 .type-icon>input:checked+img{
   /* (RADIO CHECKED) IMAGE STYLES */
-  background-color: #539AD0;
+  background-color: #2DBC8B;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 3px;
 }
 
@@ -410,6 +418,9 @@ li a:hover {
   height:100%;
 }
 
+.dark-blue-bg {
+  background-color: #0151BC;
+}
 
 .espoo-blue-font {
   color: #0151BC;
@@ -637,4 +648,16 @@ height:25px;
 
 .info-window-btn:hover {
   background-color: #539AD0;
+}
+
+
+/*LOGIN TEXT FIELDS*/
+.login-txt {
+  border-radius:40px;
+  width:80%;
+  max-width: 300px;
+  border: none;
+  padding:10px;
+  margin: 3px;
+  font-size: 1.1em;
 }

@@ -70,15 +70,6 @@
   },
   {
     "featureType": "administrative.land_parcel",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
     "elementType": "labels.text.fill",
     "stylers": [
       {
@@ -97,27 +88,10 @@
   },
   {
     "featureType": "poi",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
     "elementType": "labels.text.fill",
     "stylers": [
       {
         "color": "#757575"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.business",
-    "stylers": [
-      {
-        "visibility": "off"
       }
     ]
   },
@@ -127,15 +101,6 @@
     "stylers": [
       {
         "color": "#e5e5e5"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
       }
     ]
   },
@@ -181,15 +146,6 @@
     "stylers": [
       {
         "color": "#616161"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
       }
     ]
   },
@@ -466,14 +422,14 @@
     document.getElementById("filter").style.display = "none";
     document.getElementById("mySidenav").style.display = "none";
     document.getElementById("map-navbar-btn").style.background = '#0151BC';
-    document.getElementById("report-navbar-btn").style.background= '#A2D7FB';
+    document.getElementById("report-navbar-btn").style.background= '#539AD0';
   }
 
   function showNews(){
     document.getElementById("news").style.display = 'block';
     document.getElementById("ranking").style.display = 'none';
     document.getElementById("filter").style.display = "block";
-    document.getElementById("map-navbar-btn").style.background = '#A2D7FB';
+    document.getElementById("map-navbar-btn").style.background = '#539AD0';
     document.getElementById("report-navbar-btn").style.background = '#0151BC';
   }
 
