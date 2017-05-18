@@ -78,7 +78,7 @@ li a:hover {
 #description {
         font-family: Roboto;
         font-size: 15px;
-        font-weight: 300;
+        /*font-weight: 300;*/
       }
 
       #infowindow-content .title {
@@ -231,7 +231,7 @@ li a:hover {
   display: none;
   visibility:hidden;
   width:100%;
-  background-color: #539AD0;
+  background-color: #2DBC8B;
   color: #fff;
   text-align: center;
   border-radius: 2px;
