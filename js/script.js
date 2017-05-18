@@ -348,7 +348,7 @@
       } else if (selectedType == 'Suggestion') {
         iconPath = 'img/flat/map-idea.png';
         description = "Safe bike park needed";
-        picPath = 'suggestion.jpg';
+        picPath = 'img/suggestion.jpg';
         title = "Suggestion"
       }
       console.log("icon path " + iconPath);
@@ -383,6 +383,7 @@
         infowindow.open(map, marker);
       });
       console.log(marker);
+      map.setCenter(pos);
     }
     //For all markers, also for "other type"
     console.log("problem added");
