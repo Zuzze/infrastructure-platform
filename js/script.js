@@ -300,7 +300,7 @@
         '<button type="button" class="info-window-btn" style="margin:5px; font:1.2em" onclick="dislike(this)"><span class="like-counter">1</span><i class="fa fa-thumbs-down"></i>  Downvote</button>'+
         '<p><i class="fa fa-comment-o"></i> 0 comments</p>' +
         '<a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
-        '<a href="#" style="float:right;">See more...</a>' +
+        //'<a href="#" style="float:right;">See more...</a>' +
         '</div>';
       var infowindow = new google.maps.InfoWindow({
         content: contentString
@@ -373,7 +373,7 @@
         '<button type="button" class="info-window-btn" style="margin:5px; font:1.2em" onclick="dislike(this)"><span class="like-counter">0</span><i class="fa fa-thumbs-down"></i>  Downvote</button>'+
         '<p><i class="fa fa-comment-o"></i> 0 comments</p>' +
         '<a href="report-description.html" style="font-size: 0.9em;" align="right"></a>' +
-        '<a href="#" style="float:right;">See more...</a>' +
+        //'<a href="#" style="float:right;">See more...</a>' +
         '</div>';
 
       var infowindow = new google.maps.InfoWindow({
